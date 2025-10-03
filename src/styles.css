@@ -1,0 +1,266 @@
+/* src/styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+      font-family: 'Houstiq';
+      src: local('Houstiq'),
+           url('../assets/fonts/Houstiq.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Gilroy';
+      src: local('Gilroy'),
+           url('../assets/fonts/Gilroy.ttf') format('truetype');
+      font-weight: lighter;
+      font-style: normal;
+    }
+}
+
+@layer components {
+  .svg-animation {
+    animation: fadeInScale 1s ease-out;
+  }
+  
+  /* Default state for all paths - hidden initially */
+  .svg-animation path {
+    opacity: 0;
+    animation: fadeInPath 0.8s ease-out forwards;
+    animation-delay: calc(var(--i, 0) * 0.03s);
+    animation-fill-mode: forwards;
+  }
+  
+  /* Paths with stroke get drawing animation */
+  .svg-animation path[stroke]:not([fill="white"]) {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawPathForward 1.2s ease-out forwards;
+    animation-delay: calc(var(--i, 0) * 0.03s);
+    animation-fill-mode: forwards;
+  }
+  
+  .svg-animation path:nth-child(1) { --i: 1; }
+  .svg-animation path:nth-child(2) { --i: 2; }
+  .svg-animation path:nth-child(3) { --i: 3; }
+  .svg-animation path:nth-child(4) { --i: 4; }
+  .svg-animation path:nth-child(5) { --i: 5; }
+  .svg-animation path:nth-child(6) { --i: 6; }
+  .svg-animation path:nth-child(7) { --i: 7; }
+  .svg-animation path:nth-child(8) { --i: 8; }
+  .svg-animation path:nth-child(9) { --i: 9; }
+  .svg-animation path:nth-child(10) { --i: 10; }
+  .svg-animation path:nth-child(11) { --i: 11; }
+  .svg-animation path:nth-child(12) { --i: 12; }
+  .svg-animation path:nth-child(13) { --i: 13; }
+  .svg-animation path:nth-child(14) { --i: 14; }
+  .svg-animation path:nth-child(15) { --i: 15; }
+  .svg-animation path:nth-child(16) { --i: 16; }
+  .svg-animation path:nth-child(17) { --i: 17; }
+  .svg-animation path:nth-child(18) { --i: 18; }
+  .svg-animation path:nth-child(19) { --i: 19; }
+  .svg-animation path:nth-child(20) { --i: 20; }
+  .svg-animation path:nth-child(21) { --i: 21; }
+  .svg-animation path:nth-child(22) { --i: 22; }
+  .svg-animation path:nth-child(23) { --i: 23; }
+  .svg-animation path:nth-child(24) { --i: 24; }
+  .svg-animation path:nth-child(25) { --i: 25; }
+  .svg-animation path:nth-child(26) { --i: 26; }
+  .svg-animation path:nth-child(27) { --i: 27; }
+  .svg-animation path:nth-child(28) { --i: 28; }
+  .svg-animation path:nth-child(29) { --i: 29; }
+  .svg-animation path:nth-child(30) { --i: 30; }
+
+  /* Filled paths get a simple fade-in animation */
+  .svg-animation path[fill="white"] {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    opacity: 0;
+    animation: fadeInFill 0.8s ease-out forwards;
+    animation-delay: calc(var(--i, 0) * 0.03s + 0.5s);
+    animation-fill-mode: forwards;
+  }
+
+  /* Ensure all paths remain visible after animation */
+  .svg-animation.animate-svg path {
+    opacity: 1 !important;
+  }
+
+  /* Override any conflicting styles after animation completes */
+  .svg-animation[style*="--animation-complete"] path {
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInPath {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes drawPath {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes drawPathForward {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInFill {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hover effects for interactive elements */
+.svg-animation:hover {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* Advanced SVG white background removal */
+.svg-multiply {
+  mix-blend-mode: multiply;
+  filter: contrast(1.15) brightness(0.98);
+}
+
+/* Enhanced multiply with better color preservation */
+.section4-svg {
+  mix-blend-mode: multiply;
+  filter: contrast(1.2) brightness(0.95) saturate(1.05);
+  transition: all 0.3s ease;
+}
+
+.section4-svg:hover {
+  filter: contrast(1.25) brightness(1.0) saturate(1.1);
+  transform: scale(1.02);
+}
+
+/* Stronger white removal for complex SVGs */
+.svg-no-white {
+  mix-blend-mode: multiply;
+  filter: contrast(1.3) brightness(0.9) saturate(1.15) hue-rotate(2deg);
+  position: relative;
+}
+
+/* Alternative approach using CSS masks for white removal */
+.svg-mask-white {
+  filter: contrast(1.4) brightness(0.85) saturate(1.2);
+  mix-blend-mode: multiply;
+  mask-composite: subtract;
+}
+
+/* Screen blend mode alternative for light backgrounds */
+.svg-screen {
+  mix-blend-mode: screen;
+  filter: invert(1) contrast(1.2) brightness(0.9) invert(1);
+}
+
+/* Darken mode for preserving dark colors */
+.svg-darken {
+  mix-blend-mode: darken;
+  filter: contrast(1.1) brightness(1.05);
+}
+
+/* True white transparency without gray artifacts */
+.svg-transparent-white {
+  mix-blend-mode: multiply;
+  filter: contrast(1.05) brightness(1.02) saturate(1.0);
+}
+
+/* Clean multiply effect for desktop - no gray replacement */
+.svg-clean-multiply {
+  mix-blend-mode: multiply;
+  filter: contrast(1.1) brightness(1.0);
+}
+/* ================= Partners & Supporters (Black style) ================= */
+@layer components {
+  .partners-section {position:relative; overflow:hidden; isolation:isolate;}
+  .partners-bg {position:absolute; inset:0; background:#050505;}
+  .partners-inner {position:relative;}
+  .section-kicker {letter-spacing:.35em; font-size:.65rem; font-weight:600; text-transform:uppercase; color:#6b6bff;}
+  .section-heading--blue {color:#ffffff; font-size:1.9rem; line-height:1.2; font-weight:600; letter-spacing:.01em;}
+  @media (min-width:768px){.section-heading--blue{font-size:2.4rem;}}
+  .section-sub {font-size:.85rem; line-height:1.55;}
+  /* Fixed 4/4/3 centered layout */
+  .partners-rows {display:flex; flex-direction:column; gap:1.75rem; max-width:1200px; margin-inline:auto;}
+  .partners-row {display:grid; gap:1.25rem; grid-template-columns:repeat(4,minmax(0,1fr));}
+  .partners-row--short {grid-template-columns:repeat(2,minmax(0,1fr)); width:60%; margin-inline:auto;}
+  @media (max-width:900px){
+    .partners-row {grid-template-columns:repeat(2,minmax(0,1fr));}
+    .partners-row--short {grid-template-columns:repeat(2,minmax(0,1fr)); width:100%;}
+  }
+  @media (max-width:520px){
+    .partners-row {grid-template-columns:repeat(1,minmax(0,1fr));}
+    .partners-row--short {grid-template-columns:repeat(1,minmax(0,1fr)); width:100%;}
+  }
+  .partner-card {list-style:none; position:relative; background:linear-gradient(145deg,rgba(255,255,255,0.11) 0%, rgba(248,250,252,0.065) 48%, rgba(226,232,240,0.055) 100%); border:1px solid rgba(226,232,240,0.16); border-radius:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.7rem; padding:1.45rem 1rem 1.2rem; min-height:160px; overflow:hidden; box-shadow:0 24px 44px -30px rgba(15,23,42,0.55), inset 0 1px 0 rgba(255,255,255,0.28); backdrop-filter:blur(14px);}
+  .partner-card:before {content:""; position:absolute; inset:0; background:linear-gradient(125deg,rgba(255,255,255,0.32),rgba(241,245,249,0.12)); opacity:0; transition:opacity .45s ease;}
+  .partner-card:after {content:""; position:absolute; width:66%; height:188%; top:50%; left:50%; translate:-50% -50%; background:radial-gradient(circle at 35% 45%,rgba(255,255,255,0.26),transparent 78%); opacity:0; filter:blur(30px); transition:opacity .6s ease;}
+  .partner-card:hover:before {opacity:.45;}
+  .partner-card:hover:after {opacity:1;}
+  .partner-name {font-size:.82rem; font-weight:600; letter-spacing:.05em; text-align:center; text-transform:uppercase; color:rgba(255,255,255,0.95); line-height:1.2; text-shadow:0 2px 6px rgba(15,23,42,0.45);}
+  .partner-card:hover .partner-name {color:#ffffff; text-shadow:0 3px 8px rgba(255,255,255,0.48);}
+  .partner-logo {width:128px; max-width:100%; height:auto; display:block; opacity:.95; transition:transform .35s ease, opacity .35s ease, filter .35s ease; filter:drop-shadow(0 12px 26px rgba(15,23,42,0.25));}
+  .partner-card:hover .partner-logo {transform:translateY(-2px) scale(1.05); opacity:1; filter:drop-shadow(0 16px 28px rgba(255,255,255,0.35));}
+  .partner-cta {background:linear-gradient(110deg,#f4f4ff,#eef2ff 55%,#ffffff); color:#111827; border:1px solid rgba(99,102,241,0.22); box-shadow:0 18px 38px -24px rgba(79,70,229,0.55); transition:all .35s ease;}
+  .partner-cta:hover {box-shadow:0 22px 44px -24px rgba(79,70,229,0.6); transform:translateY(-4px);}
+  .partner-cta:active {transform:translateY(-2px);}  
+  /* Reduced motion */
+  @media (prefers-reduced-motion:reduce){
+    .partner-card:before,.partner-card:after,.partner-card,.partner-cta {transition:none !important;}
+  }
+}
+  
+  
