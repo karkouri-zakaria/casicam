@@ -1010,7 +1010,6 @@ if (isset($_POST["send"])) {
             <div class="grid gap-10 lg:grid-cols-5">
             <!-- Form -->
             <form action="" method="POST" class="space-y-5 lg:col-span-3" aria-labelledby="contact-form-heading">
-            <h3 id="contact-form-heading" class="text-lg font-semibold">Send a Message</h3>
             <div class="space-y-1.5">
             <label class="block text-xs uppercase tracking-wide text-white/60">Subject</label>
             <input type="text" name="subject" class="w-full rounded-xl bg-white/10 border border-white/15 
@@ -1041,7 +1040,7 @@ if (isset($_POST["send"])) {
             </div>
             <div class="space-y-1.5">
             <label class="block text-xs uppercase tracking-wide text-white/60">Your Message</label>
-            <textarea name="message" rows="5" class="w-full resize-y rounded-xl bg-white/10 border border-white/15 
+            <textarea name="message" rows="3" class="w-full resize-y rounded-xl bg-white/10 border border-white/15 
                 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 
                 px-4 py-2.5 text-sm placeholder:text-white/30" 
                 placeholder="Type your message..." required></textarea>
