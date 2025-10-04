@@ -956,6 +956,10 @@
                                             <input type="text" class="w-full rounded-xl bg-white/10 border border-white/15 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 px-4 py-2.5 text-sm placeholder:text-white/30" placeholder="Affiliation" required>
                                         </div>
                                         <div class="space-y-1.5">
+                                            <label class="block text-xs uppercase tracking-wide text-white/60">Subject</label>
+                                            <input type="text" class="w-full rounded-xl bg-white/10 border border-white/15 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 px-4 py-2.5 text-sm placeholder:text-white/30" placeholder="Message subject" required>
+                                        </div>
+                                        <div class="space-y-1.5">
                                             <label class="block text-xs uppercase tracking-wide text-white/60">Your Message</label>
                                             <textarea rows="5" class="w-full resize-y rounded-xl bg-white/10 border border-white/15 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 px-4 py-2.5 text-sm placeholder:text-white/30" placeholder="Type your message..." required></textarea>
                                         </div>
