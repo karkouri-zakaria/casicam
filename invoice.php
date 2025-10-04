@@ -1,17 +1,101 @@
 <?php
-// Include dompdf library
+require_once "PHPMailer/Exception.php";
+require_once "PHPMailer/PHPMailer.php";
+require_once "PHPMailer/SMTP.php";
 require_once './dompdf/autoload.inc.php';
 
+use PHPMailer\PHPMailer\{PHPMailer, SMTP, Exception};
 use Dompdf\Dompdf;
 use Dompdf\Options;
+
+function sanitizeText($value)
+{
+    return trim($value ?? '');
+}
+
+function sanitizeEmail($email)
+{
+    return filter_var(trim($email ?? ''), FILTER_SANITIZE_EMAIL);
+}
+
+function sendPdfAttachmentEmail($recipientEmail, $recipientName, $subject, $htmlBody, $pdfContent, $filename, &$error = null)
+{
+    $mail = new PHPMailer(true);
+
+    try {
+        $mail->CharSet = 'UTF-8';
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'ziko2319@gmail.com';
+        $mail->Password = 'ezwroeywzfcofwdo';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port = 465;
+
+        $mail->setFrom('Contact@casicam.ma', "Support CASICAM'26");
+        $mail->addAddress($recipientEmail, $recipientName);
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = $htmlBody;
+        $mail->addStringAttachment($pdfContent, $filename, 'base64', 'application/pdf');
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        $error = $mail->ErrorInfo ?: $e->getMessage();
+        logEvent("Invoice email failure to {$recipientEmail}: {$error}");
+        return false;
+    }
+}
+
+function renderInvoiceStatusPage($title, $message, $isSuccess = true)
+{
+    $titleSafe = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
+    $messageSafe = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+    $statusColor = $isSuccess ? '#16a34a' : '#dc2626';
+
+    echo <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{$titleSafe}</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #0a0a0a; color: #e5e7eb; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+        .card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 32px; max-width: 420px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.55); }
+        h1 { margin-bottom: 16px; color: {$statusColor}; font-size: 1.5rem; }
+        p { margin-bottom: 24px; line-height: 1.5; }
+        a { display: inline-block; padding: 10px 24px; border-radius: 9999px; background: #2563eb; color: #fff; text-decoration: none; font-weight: 600; }
+        a:hover { background: #1d4ed8; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>{$titleSafe}</h1>
+        <p>{$messageSafe}</p>
+        <a href="admin.php">Return to Admin Panel</a>
+    </div>
+</body>
+</html>
+HTML;
+
+    exit;
+}
 
 // Check if form was submitted
 if ($_POST && isset($_POST['full_name']) && isset($_POST['amount']) && isset($_POST['organization'])) {
     
+    $action = sanitizeText($_POST['action'] ?? 'download_invoice');
+    $recipientEmail = sanitizeEmail($_POST['recipient_email'] ?? '');
+
     // Sanitize input data
-    $full_name = htmlspecialchars($_POST['full_name']);
-    $organization = htmlspecialchars($_POST['organization']);
+    $full_name = sanitizeText($_POST['full_name']);
+    $organization = sanitizeText($_POST['organization']);
     $amount = floatval($_POST['amount']);
+    $full_name_safe = htmlspecialchars($full_name, ENT_QUOTES, 'UTF-8');
+    $organization_safe = htmlspecialchars($organization, ENT_QUOTES, 'UTF-8');
+    $organization_email_placeholder = 'contact@' . strtolower(str_replace(' ', '', $organization)) . '.com';
+    $organization_email_placeholder_safe = htmlspecialchars($organization_email_placeholder, ENT_QUOTES, 'UTF-8');
     
     // Generate invoice data
     $invoice_number = 'INV-' . date('Y') . '-' . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT);
@@ -25,7 +109,7 @@ if ($_POST && isset($_POST['full_name']) && isset($_POST['amount']) && isset($_P
         'city' => 'Casablanca, Morocco',
         'postal' => '20000',
         'phone' => '+212 522 230 686',
-        'email' => 'billing@casicam.org',
+        'email' => 'contact@casicam.org',
         'website' => 'www.casicam.org',
         'tax_id' => 'MA-12345678'
     ];
@@ -269,10 +353,10 @@ if ($_POST && isset($_POST['full_name']) && isset($_POST['amount']) && isset($_P
                 <div class="client-details">
                     <div class="section-title">Bill To</div>
                     <div style="line-height: 1.8;">
-                        <strong>' . $full_name . '</strong><br>
-                        ' . $organization . '<br>
+                        <strong>' . $full_name_safe . '</strong><br>
+                        ' . $organization_safe . '<br>
                         CASICAM 2026 Participant<br>
-                        Email: contact@' . strtolower(str_replace(' ', '', $organization)) . '.com
+                        Email: ' . $organization_email_placeholder_safe . '
                     </div>
                 </div>
             </div>
@@ -352,14 +436,107 @@ if ($_POST && isset($_POST['full_name']) && isset($_POST['amount']) && isset($_P
     $dompdf->render();
     
     // Generate filename
-    $filename = 'Invoice_' . $invoice_number . '_' . str_replace(' ', '_', $full_name) . '.pdf';
-    
+    $safeNameForFile = preg_replace('/[^A-Za-z0-9_-]+/', '_', $full_name);
+    $safeNameForFile = trim($safeNameForFile, '_');
+    if ($safeNameForFile === '') {
+        $safeNameForFile = 'Recipient';
+    }
+    $filename = 'Invoice_' . $invoice_number . '_' . $safeNameForFile . '.pdf';
+
+    if ($action === 'email_invoice') {
+        if (empty($recipientEmail) || !filter_var($recipientEmail, FILTER_VALIDATE_EMAIL)) {
+            renderInvoiceStatusPage('Recipient Email Required', 'Please provide a valid recipient email address before sending the invoice.', false);
+        }
+
+        $pdfContent = $dompdf->output();
+        $bodyRecipient = htmlspecialchars($full_name, ENT_QUOTES, 'UTF-8');
+        $emailSubject = "Invoice {$invoice_number} - CASICAM";
+        $emailBody = "<p>Dear {$bodyRecipient},</p>"
+            . "<p>Please find attached your invoice <strong>{$invoice_number}</strong> for CASICAM 2026 participation.</p>"
+            . "<p>If you have any questions, feel free to reach out to us at {$company['email']}.</p>"
+            . "<p>Best regards,<br>CASICAM Organizing Committee</p>";
+
+        $error = null;
+        if (sendPdfAttachmentEmail($recipientEmail, $full_name, $emailSubject, $emailBody, $pdfContent, $filename, $error)) {
+            renderInvoiceStatusPage('Invoice Sent', "The invoice was successfully emailed to {$recipientEmail}.", true);
+        }
+
+        $failureReason = $error ?: 'Unknown error.';
+        renderInvoiceStatusPage('Email Delivery Failed', 'We were unable to send the invoice. Error: ' . $failureReason, false);
+    }
+
     // Output the PDF to browser
     $dompdf->stream($filename, ['Attachment' => true]);
+    exit;
     
 } else {
     // If accessed directly without POST data, redirect to admin
     header('Location: admin.php');
     exit;
+}
+
+
+function sanitizeInput($data)
+{
+    return htmlspecialchars(strip_tags(trim($data)));
+}
+function logEvent($message)
+{
+    $logFile = __DIR__ . "/email_errors.log";
+    $time = date("Y-m-d H:i:s");
+    file_put_contents($logFile, "[$time] $message" . PHP_EOL, FILE_APPEND);
+}
+function sendEmail($mail, $recipient, $subject, $body, $name)
+{
+    $mail->setFrom("Contact@casicam.ma", 'Support CASICAM\'26');
+    $mail->addAddress(trim($recipient), $name);
+    $mail->isHTML(true);
+    $mail->Subject = $subject;
+    $mail->msgHTML($body);
+
+    if ($mail->send()) {
+        //logEvent("SUCCESS: Email sent to $name <$recipient>");
+        return true;
+    } else {
+        //logEvent("ERROR: Failed to send email to $name <$recipient> - Error: " . $mail->ErrorInfo);
+        return false;
+    }
+}
+
+$message = "";
+if (isset($_POST["send"])) {
+    $name = sanitizeInput($_POST["full-name"]);
+    $email = sanitizeInput($_POST["email"]);
+    $company = sanitizeInput($_POST["company"]);
+    $subject = sanitizeInput($_POST["subject"] ?? "");
+    $msg = sanitizeInput($_POST["message"]);
+    $mail = new PHPMailer(true);
+    $mail->CharSet = "UTF-8";
+    try {
+        $mail->isSMTP();
+        $mail->Host = "smtp.gmail.com";
+        $mail->SMTPAuth = true;
+        $mail->Username = "ziko2319@gmail.com"; // your Gmail
+        $mail->Password = "ezwroeywzfcofwdo"; // app password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port = 465;
+        $body =
+            "
+                <p><strong>Name:</strong> $name</p>
+                <p><strong>Email:</strong> $email</p>
+                <p><strong>Company:</strong> $company</p>
+                <p><strong>Message:</strong><br>" .
+            nl2br($msg) .
+            "</p>
+            ";
+        if (sendEmail($mail, "zakaria.karkouri@outlook.com", $subject, $body, $name)) {
+            $message = "✅ Message sent successfully!";
+        } else {
+            $message = "❌ Failed to send message.";
+        }
+    } catch (Exception $e) {
+        //logEvent("ERROR: Failed to send email - Error: {$mail->ErrorInfo}");
+        $message = "❌ Error: {$mail->ErrorInfo}";
+    }
 }
 ?>

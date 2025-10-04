@@ -1,9 +1,100 @@
 <?php
+require_once 'PHPMailer/Exception.php';
+require_once 'PHPMailer/PHPMailer.php';
+require_once 'PHPMailer/SMTP.php';
 // Include dompdf library
 require_once './dompdf/autoload.inc.php';
 
+use PHPMailer\PHPMailer\{PHPMailer, SMTP, Exception};
 use Dompdf\Dompdf;
 use Dompdf\Options;
+
+function sanitizeText($value)
+{
+    return trim($value ?? '');
+}
+
+function sanitizeEmail($email)
+{
+    return filter_var(trim($email ?? ''), FILTER_SANITIZE_EMAIL);
+}
+
+function logEvent($message)
+{
+    $logFile = __DIR__ . '/email_errors.log';
+    $time = date('Y-m-d H:i:s');
+    file_put_contents($logFile, "[$time] $message" . PHP_EOL, FILE_APPEND);
+}
+
+function createMailer()
+{
+    $mail = new PHPMailer(true);
+    $mail->CharSet = 'UTF-8';
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'ziko2319@gmail.com';
+    $mail->Password = 'ezwroeywzfcofwdo';
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    $mail->Port = 465;
+
+    return $mail;
+}
+
+function sendPdfEmail($recipientEmail, $recipientName, $subject, $htmlBody, $pdfContent, $filename, &$error = null)
+{
+    $mail = createMailer();
+
+    try {
+        $mail->setFrom('Contact@casicam.ma', "Support CASICAM'26");
+        $mail->addAddress($recipientEmail, $recipientName);
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = $htmlBody;
+        $mail->addStringAttachment($pdfContent, $filename, 'base64', 'application/pdf');
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        $error = $mail->ErrorInfo ?: $e->getMessage();
+        logEvent("Certificate email failure to {$recipientEmail}: {$error}");
+        return false;
+    }
+}
+
+function renderStatusPage($title, $message, $isSuccess = true)
+{
+    $titleSafe = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
+    $messageSafe = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+    $statusColor = $isSuccess ? '#16a34a' : '#dc2626';
+
+    echo <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{$titleSafe}</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #0a0a0a; color: #e5e7eb; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+        .card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 32px; max-width: 420px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.55); }
+        h1 { margin-bottom: 16px; color: {$statusColor}; font-size: 1.5rem; }
+        p { margin-bottom: 24px; line-height: 1.5; }
+        a { display: inline-block; padding: 10px 24px; border-radius: 9999px; background: #2563eb; color: #fff; text-decoration: none; font-weight: 600; }
+        a:hover { background: #1d4ed8; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>{$titleSafe}</h1>
+        <p>{$messageSafe}</p>
+        <a href="admin.php">Return to Admin Panel</a>
+    </div>
+</body>
+</html>
+HTML;
+
+    exit;
+}
 
 // Function to read Excel/CSV file and extract names and organizations
 function readDataFromFile($file) {
@@ -252,42 +343,63 @@ function generateSingleCertificate($cert_type, $full_name, $organization, $custo
 
 // Check if form was submitted
 if ($_POST && isset($_POST['cert_type']) && isset($_POST['mode'])) {
-    
-    $cert_type = htmlspecialchars($_POST['cert_type']);
-    $custom_cert_type = isset($_POST['custom_cert_type']) ? htmlspecialchars($_POST['custom_cert_type']) : '';
-    $mode = htmlspecialchars($_POST['mode']);
-    
+
+    $cert_type = sanitizeText($_POST['cert_type']);
+    $custom_cert_type = sanitizeText($_POST['custom_cert_type'] ?? '');
+    $mode = sanitizeText($_POST['mode']);
+    $action = sanitizeText($_POST['action'] ?? 'download_certificate');
+
     if ($mode === 'single') {
-        // Single certificate generation
         if (isset($_POST['full_name']) && isset($_POST['organization'])) {
-            $full_name = htmlspecialchars($_POST['full_name']);
-            $organization = htmlspecialchars($_POST['organization']);
-            
+            $full_name = sanitizeText($_POST['full_name']);
+            $organization = sanitizeText($_POST['organization']);
+            $recipientEmail = sanitizeEmail($_POST['recipient_email'] ?? '');
+
             $html = generateSingleCertificate($cert_type, $full_name, $organization, $custom_cert_type);
-            
-            // Configure Dompdf
+
             $options = new Options();
             $options->set('defaultFont', 'Times');
             $options->set('isRemoteEnabled', true);
             $options->set('isHtml5ParserEnabled', true);
-            
-            // Create Dompdf instance
+
             $dompdf = new Dompdf($options);
-            
-            // Load HTML content
             $dompdf->loadHtml($html);
-            
-            // Set paper size and orientation
             $dompdf->setPaper('A4', 'landscape');
-            
-            // Render the PDF
             $dompdf->render();
-            
-            // Generate filename
-            $filename = 'Certificate_' . str_replace(' ', '_', $full_name) . '_' . date('Y-m-d') . '.pdf';
-            
-            // Output the PDF to browser
+
+            $safeNameForFile = preg_replace('/[^A-Za-z0-9_-]+/', '_', $full_name);
+            $safeNameForFile = trim($safeNameForFile, '_');
+            if ($safeNameForFile === '') {
+                $safeNameForFile = 'Recipient';
+            }
+            $filename = 'Certificate_' . $safeNameForFile . '_' . date('Y-m-d') . '.pdf';
+
+            if ($action === 'email_certificate') {
+                if (empty($recipientEmail) || !filter_var($recipientEmail, FILTER_VALIDATE_EMAIL)) {
+                    renderStatusPage('Recipient Email Required', 'Please provide a valid recipient email address before sending the certificate.', false);
+                }
+
+                $pdfContent = $dompdf->output();
+                $certDisplayNameRaw = $cert_type === 'others' && $custom_cert_type !== '' ? $custom_cert_type : $cert_type;
+                $certDisplayNameText = ucfirst(trim($certDisplayNameRaw ?: 'Certificate'));
+                $certDisplayNameSafe = htmlspecialchars($certDisplayNameText, ENT_QUOTES, 'UTF-8');
+                $recipientNameSafe = htmlspecialchars($full_name, ENT_QUOTES, 'UTF-8');
+                $emailSubject = "Your CASICAM Certificate - {$certDisplayNameText}";
+                $emailBody = "<p>Dear {$recipientNameSafe},</p>"
+                    . "<p>Thank you for being part of CASICAM 2026. Attached you will find your certificate of {$certDisplayNameSafe}.</p>"
+                    . "<p>Best regards,<br>CASICAM Organizing Committee</p>";
+
+                $error = null;
+                if (sendPdfEmail($recipientEmail, $full_name, $emailSubject, $emailBody, $pdfContent, $filename, $error)) {
+                    renderStatusPage('Certificate Sent', "The certificate was successfully emailed to {$recipientEmail}.", true);
+                }
+
+                $failureReason = $error ?: 'Unknown error.';
+                renderStatusPage('Email Delivery Failed', 'We were unable to send the certificate. Error: ' . $failureReason, false);
+            }
+
             $dompdf->stream($filename, ['Attachment' => true]);
+            exit;
         }
     } elseif ($mode === 'bulk') {
         // Bulk certificate generation
@@ -337,8 +449,12 @@ if ($_POST && isset($_POST['cert_type']) && isset($_POST['mode'])) {
             // Generate filename
             $filename = 'Certificates_Bulk_' . date('Y-m-d') . '_' . count($participantData) . '_certificates.pdf';
             
-            // Output the PDF to browser
+            if ($action === 'email_certificates') {
+                renderStatusPage('Bulk Email Not Supported', 'Email delivery for bulk certificates is not yet available. Please download the generated PDF instead.', false);
+            }
+
             $dompdf->stream($filename, ['Attachment' => true]);
+            exit;
         }
     }
     
