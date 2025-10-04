@@ -1,6 +1,68 @@
 <?php
-    error_log("Debug: PHP is running");
-     ?>
+require_once 'PHPMailer/Exception.php';
+require_once 'PHPMailer/PHPMailer.php';
+require_once 'PHPMailer/SMTP.php';
+
+use PHPMailer\PHPMailer\{PHPMailer, SMTP, Exception};
+
+function sanitizeInput($data) {
+    return htmlspecialchars(strip_tags(trim($data)));
+}
+function logEvent($message) {
+    $logFile = __DIR__ . '/email_errors.log';
+    $time = date('Y-m-d H:i:s');
+    file_put_contents($logFile, "[$time] $message" . PHP_EOL, FILE_APPEND);
+}
+function sendEmail($mail, $recipient, $subject, $body, $name) {
+    $mail->setFrom('Contact@casicam.ma', 'Support CASICAM\'26');
+    $mail->addAddress(trim($recipient), $name);
+    $mail->isHTML(true);
+    $mail->Subject = $subject;
+    $mail->msgHTML($body);
+
+    if ($mail->send()) {
+        //logEvent("SUCCESS: Email sent to $name <$recipient>");
+        return true;
+    } else {
+        //logEvent("ERROR: Failed to send email to $name <$recipient> - Error: " . $mail->ErrorInfo);
+        return false;
+    }
+}
+
+$message = '';
+if (isset($_POST["send"])) {
+    $name    = sanitizeInput($_POST["full-name"]);
+    $email   = sanitizeInput($_POST["email"]);
+    $company = sanitizeInput($_POST["company"]);
+    $msg     = sanitizeInput($_POST["message"]);
+    $mail = new PHPMailer(true);
+    $mail->CharSet = 'UTF-8';
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = "ziko2319@gmail.com"; // your Gmail
+        $mail->Password = "ezwroeywzfcofwdo";   // app password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port = 465;
+        $body = "
+            <p><strong>Name:</strong> $name</p>
+            <p><strong>Email:</strong> $email</p>
+            <p><strong>Company:</strong> $company</p>
+            <p><strong>Message:</strong><br>" . nl2br($msg) . "</p>
+        ";
+        if (sendEmail($mail, "zakaria.karkouri@outlook.com", "Contact Message", $body, $name)) {
+            $message = "✅ Message sent successfully!";
+        } else {
+            $message = "❌ Failed to send message.";
+        }
+    } catch (Exception $e) {
+        //logEvent("ERROR: Failed to send email - Error: {$mail->ErrorInfo}");
+        $message = "❌ Error: {$mail->ErrorInfo}";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -147,9 +209,9 @@
                                     </span>
                                     <p class="text-xs sm:text-sm font-medium uppercase tracking-[0.15em] sm:tracking-[0.28em] text-white/70">Immersive Summit</p>
                                 </div>
-                                <h1 class="leading-tight max-w-full">
-                                    <span id="hero-title" class="typing-target block uppercase text-6xl sm:text-7xl md:text-6xl lg:text-7xl xl:!text-[7.5rem] font-bold" data-typing-text="CASICAM" aria-label="CASICAM" style="letter-spacing: 0;">CASICAM</span>
-                                    <span id="hero-year" class="typing-target block text-5xl sm:text-6xl md:text-5xl lg:text-6xl xl:text-[6.5rem] font-semibold mt-2 sm:mt-4" data-typing-text="2026" aria-label="2026" style="letter-spacing: 0.05em; min-height: 1em;">2026</span>
+                                <h1 class="max-w-full">
+                                    <p class="font-bold text-4xl">CASICAM</p>
+                                    <p>2026</p>
                                 </h1>
                                 <p class="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold mt-8 sm:mt-12 md:mt-16 text-white/90">
                                     April 23–25
@@ -941,34 +1003,56 @@
                             <div class="flex-1 overflow-auto px-6 md:px-10 pb-10 pt-6">
                                 <div class="grid gap-10 lg:grid-cols-5">
                                     <!-- Form -->
-                                    <form class="space-y-5 lg:col-span-3" aria-labelledby="contact-form-heading">
-                                        <h3 id="contact-form-heading" class="text-lg font-semibold">Send a Message</h3>
-                                        <div class="space-y-1.5">
-                                            <label class="block text-xs uppercase tracking-wide text-white/60">Full Name</label>
-                                            <input type="text" class="w-full rounded-xl bg-white/10 border border-white/15 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 px-4 py-2.5 text-sm placeholder:text-white/30" placeholder="Your name" required>
-                                        </div>
-                                        <div class="space-y-1.5">
-                                            <label class="block text-xs uppercase tracking-wide text-white/60">E-mail</label>
-                                            <input type="email" class="w-full rounded-xl bg-white/10 border border-white/15 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 px-4 py-2.5 text-sm placeholder:text-white/30" placeholder="name@example.com" required>
-                                        </div>
-                                        <div class="space-y-1.5">
-                                            <label class="block text-xs uppercase tracking-wide text-white/60">University / Company</label>
-                                            <input type="text" class="w-full rounded-xl bg-white/10 border border-white/15 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 px-4 py-2.5 text-sm placeholder:text-white/30" placeholder="Affiliation" required>
-                                        </div>
-                                        <div class="space-y-1.5">
-                                            <label class="block text-xs uppercase tracking-wide text-white/60">Your Message</label>
-                                            <textarea rows="5" class="w-full resize-y rounded-xl bg-white/10 border border-white/15 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 px-4 py-2.5 text-sm placeholder:text-white/30" placeholder="Type your message..." required></textarea>
-                                        </div>
-                                        <div class="pt-2">
-                                            <button type="submit" class="inline-flex items-center gap-2 rounded-full px-6 py-2.5 bg-gradient-to-r from-white/30 to-white/10 border border-white/20 hover:from-white/40 hover:to-white/20 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/40">
-                                                Send
-                                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="m5 12 7-7 7 7"/>
-                                                    <path d="M12 19V5"/>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </form>
+                                    <form action="" method="POST" class="space-y-5 lg:col-span-3" aria-labelledby="contact-form-heading">
+                                    <h3 id="contact-form-heading" class="text-lg font-semibold">Send a Message</h3>
+
+                                    <div class="space-y-1.5">
+                                        <label class="block text-xs uppercase tracking-wide text-white/60">Full Name</label>
+                                        <input type="text" name="full-name" class="w-full rounded-xl bg-white/10 border border-white/15 
+                                            focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 
+                                            px-4 py-2.5 text-sm placeholder:text-white/30" 
+                                            placeholder="Your name" required>
+                                    </div>
+
+                                    <div class="space-y-1.5">
+                                        <label class="block text-xs uppercase tracking-wide text-white/60">E-mail</label>
+                                        <input type="email" name="email" class="w-full rounded-xl bg-white/10 border border-white/15 
+                                            focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 
+                                            px-4 py-2.5 text-sm placeholder:text-white/30" 
+                                            placeholder="name@example.com" required>
+                                    </div>
+
+                                    <div class="space-y-1.5">
+                                        <label class="block text-xs uppercase tracking-wide text-white/60">University / Company</label>
+                                        <input type="text" name="company" class="w-full rounded-xl bg-white/10 border border-white/15 
+                                            focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 
+                                            px-4 py-2.5 text-sm placeholder:text-white/30" 
+                                            placeholder="Affiliation" required>
+                                    </div>
+
+                                    <div class="space-y-1.5">
+                                        <label class="block text-xs uppercase tracking-wide text-white/60">Your Message</label>
+                                        <textarea name="message" rows="5" class="w-full resize-y rounded-xl bg-white/10 border border-white/15 
+                                                focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 
+                                                px-4 py-2.5 text-sm placeholder:text-white/30" 
+                                                placeholder="Type your message..." required></textarea>
+                                    </div>
+
+                                    <div class="pt-2">
+                                        <button type="submit" name="send" class="inline-flex items-center gap-2 rounded-full 
+                                                px-6 py-2.5 bg-gradient-to-r from-white/30 to-white/10 border border-white/20 
+                                                hover:from-white/40 hover:to-white/20 text-sm font-medium focus:outline-none 
+                                                focus:ring-2 focus:ring-white/40">
+                                            Send
+                                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m5 12 7-7 7 7"/>
+                                                <path d="M12 19V5"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </form>
+
                                     <!-- Contact Info -->
                                     <div class="lg:col-span-2 space-y-8">
                                         <div>
@@ -1690,7 +1774,7 @@
                         <div class="counter-card relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-center backdrop-blur-xl md:min-w-[200px] md:flex-1">
                             <div class="relative z-10">
                                 <div class="mx-auto mb-2 sm:mb-3 h-0.5 sm:h-1 w-10 sm:w-14 rounded-full bg-gradient-to-r from-indigo-400 via-indigo-500 to-purple-500 shadow-[0_0_12px_rgba(99,102,241,0.4)]"></div>
-                                <span class="typing-target counter-value block text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="60+" data-typing-delay="300">60+</span>
+                                <span class="typing-target counter-value block text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="50+" data-typing-delay="300">50+</span>
                                 <p class="mt-2 sm:mt-2.5 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Sessions</p>
                             </div>
                         </div>
@@ -1972,13 +2056,13 @@
                     <!-- Keep Original CTA Section -->
                     <div class="mt-4 text-center">
                         <p class="text-white/50 text-xs tracking-wide uppercase">Interested in partnering?</p>
-                        <button type="button" data-contact-trigger class="inline-flex mt-5 items-center gap-2 rounded-full partner-cta px-6 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/40">
+                        <a href="#sponsorship" class="inline-flex mt-5 items-center gap-2 rounded-full partner-cta px-6 py-3 text-sm font-medium">
                             Become a Partner
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M5 12h14"/>
                                 <path d="m12 5 7 7-7 7"/>
                             </svg>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <!-- CSS Animations -->
