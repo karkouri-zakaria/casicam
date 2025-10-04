@@ -407,13 +407,6 @@ if (!$is_authenticated) {
                                 
                                 <div class="flex gap-3 pt-4">
                                     <button 
-                                        type="button"
-                                        onclick="window.location.href='admin.php'"
-                                        class="flex-1 bg-gray-600 hover:bg-gray-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200"
-                                    >
-                                        Cancel
-                                    </button>
-                                    <button 
                                         type="submit"
                                         name="action"
                                         value="email_certificate"
@@ -474,13 +467,6 @@ if (!$is_authenticated) {
                                 </div>
                                 
                                 <div class="flex gap-3 pt-4">
-                                    <button 
-                                        type="button"
-                                        onclick="window.location.href='admin.php'"
-                                        class="flex-1 bg-gray-600 hover:bg-gray-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200"
-                                    >
-                                        Cancel
-                                    </button>
                                     <button 
                                         type="submit"
                                         name="action"
@@ -723,13 +709,6 @@ if (!$is_authenticated) {
                             </div>
                             
                             <div class="flex gap-3 pt-4">
-                                <button 
-                                    type="button"
-                                    onclick="window.location.href='admin.php'"
-                                    class="flex-1 bg-gray-600 hover:bg-gray-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200"
-                                >
-                                    Cancel
-                                </button>
                                 <button 
                                     type="submit"
                                     name="action"
