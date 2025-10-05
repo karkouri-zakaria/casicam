@@ -1,0 +1,11 @@
+# Ignore node_modules in the app directory
+/node_modules
+
+# Ignore user-specific or system-specific files
+.ash_history
+.cache
+.dotnet
+.git
+.npm
+.vscode-server
+.gitconfig
