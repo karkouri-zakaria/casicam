@@ -364,7 +364,7 @@ if (isset($_POST["register"])) {
         <main class="pt-20 lg:pt-20">
             <!-- section 1-->
             <section id="overview">
-                <div class="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-40 py-6 md:py-12">
+                <div class="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-60 py-6 md:py-12">
                     <!-- First Row - Main Hero and Side Cards -->
                     <div class="flex flex-col lg:flex-row items-stretch justify-center gap-6 min-h-[500px] mb-12">
                         <!-- Main Hero Card (Left - Large) -->
@@ -452,9 +452,9 @@ if (isset($_POST["register"])) {
                         </div>
                     </div>
                     <!-- Second Row - Three Equal Cards -->
-                    <div class="flex flex-col lg:flex-row items-stretch justify-center gap-4 sm:gap-6 mb-8 sm:mb-12" style="background-image: url('https://assets-global.website-files.com/647f69521b16ed3be0ca202f/6481047d7a9cb3c36e37ea43_Cell%20Background%205-p-500.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    <div class="flex flex-col lg:flex-row items-stretch justify-center gap-4 sm:gap-6 mb-8 sm:mb-12">
                         <!-- Registration Card -->
-                        <div class="glass rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover flex-1 shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[120px] sm:min-h-auto" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="registration-modal" data-registration-trigger>
+                        <div class="glass rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover flex-1 shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[120px] sm:min-h-auto" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="registration-modal" data-registration-trigger style="background-image: url('https://cdn.prod.website-files.com/647f69521b16ed3be0ca202f/6481047da7e9bb65a94e048f_Cell%20Background%204.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
                             <div class="mb-3">
                                 <h2 class="text-xl sm:text-2xl font-bold tracking-wide flex flex-wrap items-center gap-2">Registration <span class="inline-block text-xs font-normal bg-white/10 px-2 py-1 rounded-full tracking-wide">Fees</span></h2>
                             </div>
@@ -490,7 +490,7 @@ if (isset($_POST["register"])) {
                             <div class="absolute bottom-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-lg transform translate-x-8 translate-y-8"></div>
                         </div>
                         <!-- Contact Card -->
-                        <div class="glass rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover flex-1 shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[120px] sm:min-h-auto" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="contact-modal" data-contact-trigger style="background-image: url('https://cdn.prod.website-files.com/647f69521b16ed3be0ca202f/6481047d8cdbfeaf1b9a2b1f_Cell%20Background%206.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                        <div class="glass rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover flex-1 shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[120px] sm:min-h-auto" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="contact-modal" data-contact-trigger style="background-image: url('https://cdn.prod.website-files.com/647f69521b16ed3be0ca202f/6481047da7e9bb65a94e048f_Cell%20Background%204.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
                             <div class="mb-3">
                                 <h2 class="text-xl sm:text-2xl font-bold tracking-wide flex flex-wrap items-center gap-2">Contact <span class="inline-block text-xs font-normal bg-white/10 px-2 py-1 rounded-full tracking-wide">Form</span></h2>
                             </div>
@@ -507,9 +507,9 @@ if (isset($_POST["register"])) {
                         </div>
                     </div>
                     <!-- fourth Row -->
-                    <div class="flex flex-col lg:flex-row items-stretch justify-center gap-4 sm:gap-6 mb-8 sm:mb-12" style="background-image: url('https://assets-global.website-files.com/647f69521b16ed3be0ca202f/6481047d7a9cb3c36e37ea43_Cell%20Background%205-p-500.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    <div class="flex flex-col lg:flex-row items-stretch justify-center gap-4 sm:gap-6 mb-8 sm:mb-12">
                         <!-- Committees Card -->
-                        <div class="glass rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover shadow-xl flex-1 lg:flex-none lg:basis-2/3 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[120px] sm:min-h-auto" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="committees-modal" data-committees-trigger>
+                        <div class="glass rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover shadow-xl flex-1 lg:flex-none lg:basis-2/3 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[120px] sm:min-h-auto" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="committees-modal" data-committees-trigger  style="background-image: url('https://assets-global.website-files.com/647f69521b16ed3be0ca202f/6481047da7e9bb65a94e048f_Cell%20Background%204-p-2000.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
                             <div class="mb-3">
                                 <h2 class="text-xl sm:text-2xl font-bold tracking-wide flex flex-wrap items-center gap-2">Committees <span class="inline-block text-xs font-normal bg-white/10 px-2 py-1 rounded-full tracking-wide">Overview</span></h2>
                             </div>
@@ -523,21 +523,24 @@ if (isset($_POST["register"])) {
                                 </div>
                             </div>
                         </div>
-                        <!-- Security Card -->
-                        <div class="glass rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover shadow-xl flex-1 lg:flex-none lg:basis-1/3 min-h-[120px] sm:min-h-auto flex flex-col" style="background-image: url('https://cdn.prod.website-files.com/647f69521b16ed3be0ca202f/6481047d8cdbfeaf1b9a2b1f_Cell%20Background%206.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-                            <div class="flex items-start justify-between gap-4 mb-2 sm:mb-3">
-                                <h3 class="text-base sm:text-lg font-semibold text-gray-300">QR Code</h3>
-                                <span class="inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/10 border border-white/15 shadow-lg flex-shrink-0">
-                                    <svg class="w-5 h-5 sm:w-7 sm:h-7 text-white/75 animate-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <path d="M9 4h6a1 1 0 0 1 1 1v1.5h1.5A1.5 1.5 0 0 1 19 8v10a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 18V8A1.5 1.5 0 0 1 6.5 6.5H8V5a1 1 0 0 1 1-1Z" />
-                                        <path d="M9 11h6" />
-                                        <path d="M9 14h5" />
-                                        <path d="M9 17h4" />
-                                    </svg>
+                        <!-- Conference Program Card -->
+                        <div class="glass rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover shadow-xl flex-1 lg:flex-none lg:basis-1/3 min-h-[120px] sm:min-h-auto flex flex-col relative" style="background-image: url('https://assets-global.website-files.com/647f69521b16ed3be0ca202f/6481047d7a9cb3c36e37ea43_Cell%20Background%205-p-2000.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                            <!-- Coming Soon Badge -->
+                            <div class="absolute bottom-3 left-3 sm:bottom-4 sm:left-4">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r from-orange-500/20 to-pink-500/20 border border-orange-400/30 backdrop-blur-sm">
+                                    <span class="relative flex h-2 w-2">
+                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                                    </span>
+                                    <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-orange-200">Available Soon</span>
                                 </span>
                             </div>
-                            <div class="mt-auto flex justify-end">
-                                <img src="https://www.freepnglogos.com/uploads/qr-code-png/qr-code-code-encode-mobile-code-code-icon-37.png" alt="QR Code" class="w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32">
+                            <div class="flex items-start justify-between gap-3 mb-3">
+                                <div class="flex-1">
+                                    <h2 class="text-xl sm:text-2xl font-bold tracking-wide mb-1">Conference Program</h2>
+                                    <p class="text-gray-400 text-xs sm:text-sm leading-snug">Detailed schedule of sessions and events</p>
+                                </div>
+                                <img src="https://www.freepnglogos.com/uploads/qr-code-png/qr-code-code-encode-mobile-code-code-icon-37.png" alt="QR Code" class="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 opacity-80">
                             </div>
                         </div>
                     </div>
@@ -2140,14 +2143,14 @@ if (isset($_POST["register"])) {
             </div>
             <div class="counter-card relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-center backdrop-blur-xl md:min-w-[200px] md:flex-1">
             <div class="relative z-10">
-            <div class="mx-auto mb-2 sm:mb-3 h-0.5 sm:h-1 w-10 sm:w-14 rounded-full bg-orange-700 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
+            <div class="mx-auto mb-2 sm:mb-3 h-0.5 sm:h-1 w-10 sm:w-14 rounded-full bg-orange-400 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
             <span class="typing-target counter-value block text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="60+" data-typing-delay="300">60+</span>
             <p class="mt-2 sm:mt-2.5 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Sessions</p>
             </div>
             </div>
             <div class="counter-card relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-center backdrop-blur-xl md:min-w-[200px] md:flex-1">
             <div class="relative z-10">
-            <div class="mx-auto mb-2 sm:mb-3 h-0.5 sm:h-1 w-10 sm:w-14 rounded-full bg-red-500 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
+            <div class="mx-auto mb-2 sm:mb-3 h-0.5 sm:h-1 w-10 sm:w-14 rounded-full bg-red-400 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
             <span class="typing-target counter-value block text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="120" data-typing-delay="450">120</span>
             <p class="mt-2 sm:mt-2.5 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Accepted Papers</p>
             </div>
