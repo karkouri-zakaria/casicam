@@ -364,7 +364,7 @@ if (isset($_POST["register"])) {
         <main class="pt-20 lg:pt-20">
             <!-- section 1-->
             <section id="overview">
-                <div class="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-60 py-6 md:py-12">
+                <div class="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-40 py-6 md:py-12">
                     <!-- First Row - Main Hero and Side Cards -->
                     <div class="flex flex-col lg:flex-row items-stretch justify-center gap-6 min-h-[500px] mb-12">
                         <!-- Main Hero Card (Left - Large) -->
@@ -580,18 +580,17 @@ if (isset($_POST["register"])) {
             <!-- Month tabs -->
             <div class="px-6 md:px-10 pt-5">
             <div role="tablist" aria-label="Months" class="flex flex-wrap gap-3">
-            <button role="tab" aria-selected="true" data-month-btn="feb2026-sub" class="month-tab px-4 py-1.5 rounded-full bg-white/15 text-white text-xs md:text-sm font-medium hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/30">February 2026 – Submission</button>
-            <button role="tab" aria-selected="false" data-month-btn="feb2026" class="month-tab px-4 py-1.5 rounded-full bg-white/5 text-white/70 text-xs md:text-sm font-medium hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/30">February 2026 – Notifications</button>
-            <button role="tab" aria-selected="false" data-month-btn="mar2026" class="month-tab px-4 py-1.5 rounded-full bg-white/5 text-white/70 text-xs md:text-sm font-medium hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/30">March 2026</button>
-            <button role="tab" aria-selected="false" data-month-btn="apr2026" class="month-tab px-4 py-1.5 rounded-full bg-white/5 text-white/70 text-xs md:text-sm font-medium hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/30">April 2026</button>
+            <button role="tab" aria-selected="true" data-month-btn="feb2025" class="month-tab px-4 py-1.5 rounded-full bg-white/15 text-white text-xs md:text-sm font-medium hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/30">February 2025</button>
+            <button role="tab" aria-selected="false" data-month-btn="mar2025" class="month-tab px-4 py-1.5 rounded-full bg-white/5 text-white/70 text-xs md:text-sm font-medium hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/30">March 2025</button>
+            <button role="tab" aria-selected="false" data-month-btn="apr2025" class="month-tab px-4 py-1.5 rounded-full bg-white/5 text-white/70 text-xs md:text-sm font-medium hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/30">April 2025</button>
             </div>
             </div>
             <!-- Calendars container -->
-            <div class="flex-1 overflow-auto px-6 md:px-10 pb-10 pt-6">
-            <div class="space-y-16">
-            <!-- February 2026 (Submission) -->
-            <div data-month-panel="feb2026-sub" role="tabpanel" aria-labelledby="February 2026 – Submission" class="month-panel">
-            <h3 class="text-lg font-semibold mb-4">February 2026 – Paper Submission Window</h3>
+            <div class="flex-1 overflow-auto px-6 md:px-10 pb-10 pt-2">
+            <div class="space-y-4">
+            <!-- February 2025 -->
+            <div data-month-panel="feb2025" role="tabpanel" aria-labelledby="February 2025" class="month-panel">
+            <h3 class="text-lg font-semibold my-4">February 2025 – Submission & Notification</h3>
             <div class="grid grid-cols-7 gap-px bg-white/10 rounded-lg overflow-hidden text-center text-[11px] md:text-xs">
             <div class="py-2 bg-white/5 font-medium">Mon</div>
             <div class="py-2 bg-white/5 font-medium">Tue</div>
@@ -616,22 +615,22 @@ if (isset($_POST["register"])) {
             <div class="py-3 bg-white/[0.02] text-white/50">5</div>
             <div class="py-3 bg-white/[0.02] text-white/50">6</div>
             <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">7</div>
-            <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">8</div>
+            <div class="py-3 bg-white/[0.02] text-white/50">8</div>
             <!-- Week 3 (9-15) -->
-            <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">9</div>
-            <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">10</div>
-            <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">11</div>
-            <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">12</div>
-            <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">13</div>
-            <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">14</div>
-            <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">15</div>
+            <div class="py-3 bg-white/[0.02] text-white/50">9</div>
+            <div class="py-3 bg-white/[0.02] text-white/50">10</div>
+            <div class="py-3 bg-white/[0.02] text-white/50">11</div>
+            <div class="py-3 bg-white/[0.02] text-white/50">12</div>
+            <div class="py-3 bg-white/[0.02] text-white/50">13</div>
+            <div class="py-3 bg-white/[0.02] text-white/50">14</div>
+            <div class="py-3 bg-white/[0.02] text-white/50">15</div>
             <!-- Week 4 (16-22) -->
-            <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">16</div>
-            <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">17</div>
-            <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">18</div>
-            <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">19</div>
-            <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">20</div>
-            <div class="py-3 bg-amber-500/20 ring-1 ring-amber-400/40 font-medium text-amber-100">21</div>
+            <div class="py-3 bg-white/[0.02] text-white/50">16</div>
+            <div class="py-3 bg-white/[0.02] text-white/50">17</div>
+            <div class="py-3 bg-white/[0.02] text-white/50">18</div>
+            <div class="py-3 bg-white/[0.02] text-white/50">19</div>
+            <div class="py-3 bg-white/[0.02] text-white/50">20</div>
+            <div class="py-3 bg-indigo-500/25 ring-1 ring-indigo-400/40 font-medium text-indigo-100">21</div>
             <div class="py-3 bg-white/[0.02] text-white/50">22</div>
             <!-- Week 5 (23-28) -->
             <div class="py-3 bg-white/[0.02] text-white/50">23</div>
@@ -643,9 +642,9 @@ if (isset($_POST["register"])) {
             <div class="py-3 bg-white/[0.02] text-white/30" aria-hidden="true"></div>
             </div>
             </div>
-            <!-- February 2026 (Notifications) -->
-            <div data-month-panel="feb2026" role="tabpanel" aria-labelledby="February 2026 – Notifications" class="month-panel hidden">
-            <h3 class="text-lg font-semibold mb-4">February 2026 – Notification Rounds</h3>
+            <!-- March 2025 -->
+            <div data-month-panel="mar2025" role="tabpanel" aria-labelledby="March 2025" class="month-panel hidden">
+            <h3 class="text-lg font-semibold mb-4">March 2025 – Final Notifications & Camera Ready</h3>
             <div class="grid grid-cols-7 gap-px bg-white/10 rounded-lg overflow-hidden text-center text-[11px] md:text-xs">
             <div class="py-2 bg-white/5 font-medium">Mon</div>
             <div class="py-2 bg-white/5 font-medium">Tue</div>
@@ -680,72 +679,18 @@ if (isset($_POST["register"])) {
             <div class="py-3 bg-white/[0.02] text-white/50">14</div>
             <div class="py-3 bg-white/[0.02] text-white/50">15</div>
             <!-- Week 4 (16-22) -->
-            <div class="py-3 bg-white/[0.02] text-white/50">16</div>
+            <div class="py-3 bg-sky-500/25 ring-1 ring-sky-400/40 font-medium text-sky-100">16</div>
             <div class="py-3 bg-white/[0.02] text-white/50">17</div>
             <div class="py-3 bg-white/[0.02] text-white/50">18</div>
             <div class="py-3 bg-white/[0.02] text-white/50">19</div>
             <div class="py-3 bg-white/[0.02] text-white/50">20</div>
-            <div class="py-3 bg-indigo-500/25 ring-1 ring-indigo-400/40 font-medium text-indigo-100">21</div>
+            <div class="py-3 bg-white/[0.02] text-white/50">21</div>
             <div class="py-3 bg-white/[0.02] text-white/50">22</div>
-            <!-- Week 5 (23-Mar1) -->
+            <!-- Week 5 (23-29) -->
             <div class="py-3 bg-white/[0.02] text-white/50">23</div>
             <div class="py-3 bg-white/[0.02] text-white/50">24</div>
             <div class="py-3 bg-white/[0.02] text-white/50">25</div>
             <div class="py-3 bg-white/[0.02] text-white/50">26</div>
-            <div class="py-3 bg-white/[0.02] text-white/50">27</div>
-            <div class="py-3 bg-indigo-500/25 ring-1 ring-indigo-400/40 font-medium text-indigo-100">28</div>
-            <div class="py-3 bg-white/[0.02] text-white/30" aria-hidden="true"></div>
-            </div>
-            </div>
-            <!-- March 2026 -->
-            <div data-month-panel="mar2026" role="tabpanel" aria-labelledby="March 2026" class="month-panel hidden">
-            <h3 class="text-lg font-semibold mb-4">March 2026 – Final Notifications & Camera Ready</h3>
-            <div class="grid grid-cols-7 gap-px bg-white/10 rounded-lg overflow-hidden text-center text-[11px] md:text-xs">
-            <div class="py-2 bg-white/5 font-medium">Mon</div>
-            <div class="py-2 bg-white/5 font-medium">Tue</div>
-            <div class="py-2 bg-white/5 font-medium">Wed</div>
-            <div class="py-2 bg-white/5 font-medium">Thu</div>
-            <div class="py-2 bg-white/5 font-medium">Fri</div>
-            <div class="py-2 bg-white/5 font-medium">Sat</div>
-            <div class="py-2 bg-white/5 font-medium">Sun</div>
-            <!-- Leading blanks (Mon-Sat) -->
-            <div class="py-3 bg-white/[0.02]"></div>
-            <div class="py-3 bg-white/[0.02]"></div>
-            <div class="py-3 bg-white/[0.02]"></div>
-            <div class="py-3 bg-white/[0.02]"></div>
-            <div class="py-3 bg-white/[0.02]"></div>
-            <div class="py-3 bg-white/[0.02]"></div>
-            <!-- 1 (Sun) -->
-            <div class="py-3 bg-white/[0.02] text-white/50">1</div>
-            <!-- Week 2 (2-8) -->
-            <div class="py-3 bg-white/[0.02] text-white/50">2</div>
-            <div class="py-3 bg-white/[0.02] text-white/50">3</div>
-            <div class="py-3 bg-white/[0.02] text-white/50">4</div>
-            <div class="py-3 bg-white/[0.02] text-white/50">5</div>
-            <div class="py-3 bg-white/[0.02] text-white/50">6</div>
-            <div class="py-3 bg-white/[0.02] text-white/50">7</div>
-            <div class="py-3 bg-white/[0.02] text-white/50">8</div>
-            <!-- Week 3 (9-15) -->
-            <div class="py-3 bg-indigo-500/25 ring-1 ring-indigo-400/40 font-medium text-indigo-100">9</div>
-            <div class="py-3 bg-white/[0.02] text-white/50">10</div>
-            <div class="py-3 bg-white/[0.02] text-white/50">11</div>
-            <div class="py-3 bg-white/[0.02] text-white/50">12</div>
-            <div class="py-3 bg-white/[0.02] text-white/50">13</div>
-            <div class="py-3 bg-white/[0.02] text-white/50">14</div>
-            <div class="py-3 bg-white/[0.02] text-white/50">15</div>
-            <!-- Week 4 (16-22) -->
-            <div class="py-3 bg-sky-500/25 ring-1 ring-sky-400/40 font-medium text-sky-100">16</div>
-            <div class="py-3 bg-sky-500/25 ring-1 ring-sky-400/40 font-medium text-sky-100">17</div>
-            <div class="py-3 bg-sky-500/25 ring-1 ring-sky-400/40 font-medium text-sky-100">18</div>
-            <div class="py-3 bg-sky-500/25 ring-1 ring-sky-400/40 font-medium text-sky-100">19</div>
-            <div class="py-3 bg-sky-500/25 ring-1 ring-sky-400/40 font-medium text-sky-100">20</div>
-            <div class="py-3 bg-sky-500/25 ring-1 ring-sky-400/40 font-medium text-sky-100">21</div>
-            <div class="py-3 bg-sky-500/25 ring-1 ring-sky-400/40 font-medium text-sky-100">22</div>
-            <!-- Week 5 (23-29) -->
-            <div class="py-3 bg-sky-500/25 ring-1 ring-sky-400/40 font-medium text-sky-100">23</div>
-            <div class="py-3 bg-sky-500/25 ring-1 ring-sky-400/40 font-medium text-sky-100">24</div>
-            <div class="py-3 bg-sky-500/25 ring-1 ring-sky-400/40 font-medium text-sky-100">25</div>
-            <div class="py-3 bg-sky-500/25 ring-1 ring-sky-400/40 font-medium text-sky-100">26</div>
             <div class="py-3 bg-white/[0.02] text-white/50">27</div>
             <div class="py-3 bg-white/[0.02] text-white/50">28</div>
             <div class="py-3 bg-white/[0.02] text-white/50">29</div>
@@ -759,9 +704,9 @@ if (isset($_POST["register"])) {
             <div class="py-3 bg-white/[0.02] text-white/30" aria-hidden="true"></div>
             </div>
             </div>
-            <!-- April 2026 -->
-            <div data-month-panel="apr2026" role="tabpanel" aria-labelledby="April 2026" class="month-panel hidden">
-            <h3 class="text-lg font-semibold mb-4">April 2026 – Conference Days On Site</h3>
+            <!-- April 2025 -->
+            <div data-month-panel="apr2025" role="tabpanel" aria-labelledby="April 2025" class="month-panel hidden">
+            <h3 class="text-lg font-semibold mb-4">April 2025 – Conference Days On Site</h3>
             <div class="grid grid-cols-7 gap-px bg-white/10 rounded-lg overflow-hidden text-center text-[11px] md:text-xs">
             <div class="py-2 bg-white/5 font-medium">Mon</div>
             <div class="py-2 bg-white/5 font-medium">Tue</div>
@@ -2162,7 +2107,7 @@ if (isset($_POST["register"])) {
             </section>
             <!-- section 4: Gallery -->
             <section class="relative" aria-labelledby="features-heading">
-                <div class="mx-auto px-6 md:px-12 lg:px-40 py-16">
+                <div class="mx-auto px-6 md:px-12 lg:px-40 pb-16">
                     <h2 id="features-heading" class="text-white/90 text-lg">Gallery</h2>
                     <!-- Main hero image -->
                     <div class="mt-4 rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-white/5 cursor-pointer group" data-gallery-item data-img-src="assets/images/pics/2.jpg" data-img-alt="Overview of the conference venue" data-img-caption="Conference Venue Overview">
@@ -2212,7 +2157,7 @@ if (isset($_POST["register"])) {
                                 </div>
                             </div>
                             <div class="p-4">
-                                <h3 class="text-white font-medium">Meeting Industrial Experts</h3>
+                                <h3 class="text-white font-medium">Meeting Industrialists</h3>
                                 <p class="mt-2 text-white/70 text-sm">Industry professionals showcase innovations and provide insights into real-world applications.</p>
                             </div>
                         </article>
@@ -2266,7 +2211,7 @@ if (isset($_POST["register"])) {
                 </div>
                 <div class="relative z-10 mx-auto px-6 md:px-12 lg:px-24 py-16">
                     <!-- Modern Header -->
-                    <div class="text-center mb-20">
+                    <div class="text-center mb-12">
                         <div class="inline-flex items-center gap-4 mb-6">
                             <div class="w-12 h-px bg-gradient-to-r from-transparent via-orange-400/60 to-transparent"></div>
                             <span class="text-xs font-bold tracking-[0.25em] text-orange-400/80 uppercase">Strategic Alliance</span>
@@ -2283,7 +2228,7 @@ if (isset($_POST["register"])) {
                         </p>
                     </div>
                     <!-- Unified Partner Grid -->
-                    <div class="max-w-7xl mx-auto">
+                    <div class="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-20 pb-6 md:pb-10    ">
                         <!-- All partners in consistent grid -->
                         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-8">
                             <!-- PLM Resources -->
@@ -2388,10 +2333,25 @@ if (isset($_POST["register"])) {
                             </div>
                         </div>
                         <!-- Connection Visualization -->
-                        <div class="hidden lg:block relative w-full h-20 mb-8">
+                        <div class="block relative w-full h-12 lg:h-20 -mb-8 lg:-mb-10">
                             <svg class="absolute inset-0 w-full h-full" viewBox="0 0 800 80" fill="none">
-                                <!-- Central hub concept -->
-                                <circle cx="400" cy="40" r="3" fill="url(#centralGradient)" opacity="0.8"/>
+                                <!-- Central hub concept with glow -->
+                                <defs>
+                                    <filter id="glow">
+                                        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                        <feMerge>
+                                            <feMergeNode in="coloredBlur"/>
+                                            <feMergeNode in="SourceGraphic"/>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                <circle cx="400" cy="40" r="3" fill="url(#centralGradient)" opacity="0.8" filter="url(#glow)">
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="400" cy="40" r="6" fill="url(#centralGradient)" opacity="0.3">
+                                    <animate attributeName="r" values="3;8;3" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/>
+                                </circle>
                                 <!-- Radiating connections -->
                                 <g opacity="0.4">
                                     <path d="M100 40 L350 40" stroke="url(#connectionGradient)" stroke-width="1" stroke-dasharray="8,4">
@@ -2424,7 +2384,7 @@ if (isset($_POST["register"])) {
                         </div>
                     </div>
                     <!-- Keep Original CTA Section -->
-                    <div class="mt-4 text-center">
+                    <div class="mt-0 text-center">
                         <p class="text-white/50 text-xs tracking-wide uppercase">Interested in partnering?</p>
                         <button type="button" data-contact-trigger class="inline-flex mt-5 items-center gap-2 rounded-full partner-cta px-6 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/40">
                             Become a Partner
