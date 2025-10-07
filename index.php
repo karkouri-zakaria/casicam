@@ -368,7 +368,7 @@ if (isset($_POST["register"])) {
                     <!-- First Row - Main Hero and Side Cards -->
                     <div class="flex flex-col lg:flex-row items-stretch justify-center gap-6 min-h-[500px] mb-12">
                         <!-- Main Hero Card (Left - Large) -->
-                        <div class="flex-1 lg:flex-[3] relative overflow-hidden rounded-2xl md:rounded-3xl glass card-hover shadow-2xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">
+                        <div class="flex-1 lg:flex-[3] relative overflow-hidden rounded-2xl md:rounded-3xl glass card-hover shadow-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="intro-modal" data-intro-trigger style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">
                             <div class="absolute inset-0 opacity-80" style="background-image: url('assets/images/card1.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
                             <div class="absolute inset-0 bg-black/60"></div>
                             <div class="relative z-10 p-6 sm:p-8 md:px-10 lg:px-14 h-full flex flex-col justify-center min-h-[400px] md:min-h-[500px]">
@@ -400,12 +400,12 @@ if (isset($_POST["register"])) {
                                 <div class="absolute bottom-1/4 right-1/3 w-48 h-48 bg-white/10 rounded-full blur-lg"></div>
                             </div>
                         </div>
-                        <!-- Intro Card -->
-                        <div class="flex-1 rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 relative overflow-hidden min-h-[300px] sm:min-h-[350px]" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="intro-modal" data-intro-trigger style="background-image: url('assets/images/card2.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);">
+                        <!-- Placeholder Card -->
+                        <div class="flex-1 rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 relative overflow-hidden min-h-[300px] sm:min-h-[350px]" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="placeholder-modal" data-placeholder-trigger style="background-image: url('assets/images/card2.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);">
                             <div class="absolute inset-0 bg-black/50 pointer-events-none"></div>
                             <div class="relative z-10 h-full flex flex-col">
                                 <div class="mb-4">
-                                    <h3 class="text-base sm:text-lg md:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-white flex flex-wrap items-center gap-2">Introduction <span class="inline-block text-xs font-normal bg-white/10 px-2 py-1 rounded-full tracking-wide whitespace-nowrap">CASICAM'26</span></h3>
+                                    <h3 class="text-base sm:text-lg md:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-white flex flex-wrap items-center gap-2">Discover <span class="inline-block text-xs font-normal bg-white/10 px-2 py-1 rounded-full tracking-wide whitespace-nowrap">CASICAM'26</span></h3>
                                     <h2 class="text-2xl sm:text-3xl md:text-2xl xl:text-3xl font-semibold mt-4 sm:mt-6">Welcome to<br><span class="text-3xl sm:text-4xl md:text-3xl xl:text-4xl">Marrakech</span></h2>
                                 </div>
                                 <div class="flex justify-end mt-auto">
@@ -1796,6 +1796,43 @@ if (isset($_POST["register"])) {
             </div>
             </div>
             </div>
+            <!-- Placeholder Modal (Empty - Content Coming Soon) -->
+            <div id="placeholder-modal" class="hidden fixed inset-0 z-[200]" role="dialog" aria-modal="true" aria-labelledby="placeholder-modal-title">
+            <div class="absolute inset-0 bg-black/85 backdrop-blur-md transition-opacity" data-placeholder-backdrop></div>
+            <div class="relative mx-auto w-full max-w-4xl px-4 md:px-8 py-10 mt-10 md:mt-20 h-[calc(100vh-4rem)] md:h-[calc(100vh-6rem)] flex flex-col">
+            <div class="relative flex-1 overflow-hidden rounded-3xl border border-white/15 bg-[#101010]/95 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_60px_-10px_rgba(0,0,0,0.9)] backdrop-blur-xl">
+            <div class="absolute inset-0 opacity-40 pointer-events-none" style="background:
+                radial-gradient(800px 500px at 85% 20%, rgba(255,255,255,0.12), transparent 70%),
+                radial-gradient(600px 500px at 15% 80%, rgba(255,255,255,0.08), transparent 70%)"></div>
+            <div class="relative h-full flex flex-col">
+            <div class="flex items-start md:items-center justify-between gap-6 px-6 md:px-10 pt-8 pb-6 border-b border-white/10">
+            <div>
+            <h2 id="placeholder-modal-title" class="text-2xl md:text-3xl font-semibold tracking-tight">Content Coming Soon</h2>
+            <p class="text-white/55 mt-2 text-xs md:text-sm max-w-xl">This section will be updated with more information.</p>
+            </div>
+            <button type="button" class="shrink-0 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-white/40" aria-label="Close" data-placeholder-close>
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+            </svg>
+            </button>
+            </div>
+            <div class="flex-1 overflow-auto px-6 md:px-10 pb-10 pt-6 flex items-center justify-center">
+            <div class="text-center max-w-md">
+            <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-white/5 flex items-center justify-center">
+            <svg class="w-10 h-10 text-white/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M9 9h6v6H9z"/>
+            </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-white/80">Content Under Development</h3>
+            <p class="text-white/50 text-sm leading-relaxed">We're working on bringing you exciting content for this section. Please check back later for updates!</p>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
             <!-- section 2: Testimonial -->
             <section class="relative overflow-hidden" aria-labelledby="testimonial-heading">
             <div class="absolute inset-0">
@@ -2057,51 +2094,133 @@ if (isset($_POST["register"])) {
             </div>
             </div>
             </section>
-            <!-- section 4: Conference Impact / Counters -->
+            <!-- section 4: Conference Impact & Previous Editions -->
             <section id="impact" class="relative overflow-hidden" aria-labelledby="impact-heading">
+            <!-- Grid Background -->
+            <div class="absolute inset-0 pointer-events-none opacity-20">
+                <div class="absolute inset-0" style="background-image: 
+                    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+                    background-size: 50px 50px;">
+                </div>
+            </div>
+            
             <div class="mx-auto px-4 sm:px-6 md:px-12 lg:px-40 py-12 sm:py-16 md:py-20 relative z-10">
+            <!-- CASICAM in Numbers -->
             <div class="max-w-3xl mx-auto text-center mb-8 sm:mb-10 md:mb-14 space-y-3 sm:space-y-4">
-            <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.3em] sm:tracking-[0.38em] text-white/70">Conference Pulse</span>
+            <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.3em] sm:tracking-[0.38em] text-white/70">Our Journey</span>
             <div class="flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-4">
             <span class="relative flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-black text-base font-semibold tracking-tight shadow-[0_8px_30px_rgba(236,72,153,0.35)]">
             <img src="./assets/images/logo.svg" alt="CASICAM Logo" class="h-8 w-8 sm:h-10 sm:w-10">
             </span>
-            <h2 id="impact-heading" class="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight bg-gradient-to-r from-orange-400 via-orange-600 to-red-400 bg-clip-text text-transparent">CASICAM in Numbers</h2>
+            <h2 id="impact-heading" class="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight bg-gradient-to-r from-orange-400 via-orange-600 to-red-400 bg-clip-text text-transparent">CASICAM Through the Years</h2>
             </div>
-            <p class="text-white/65 text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl mx-auto px-4">A snapshot of the scale, diversity, and scientific pulse waiting for you in Marrakech.</p>
-            <p class="text-white/40 text-[10px] sm:text-xs mt-2 italic">Based on previous edition achievements</p>
+            <p class="text-white/65 text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl mx-auto px-4">From groundbreaking achievements to growing global impact — explore our conference legacy through numbers and past editions.</p>
             </div>
-            <div class="counter-track grid grid-cols-2 md:flex md:flex-nowrap md:justify-center gap-3 sm:gap-4 md:gap-6 pb-4 px-2 sm:px-0" data-counter-section>
-            <div class="counter-card relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-center backdrop-blur-xl md:min-w-[200px] md:flex-1">
+            <div class="counter-track grid grid-cols-2 md:flex md:flex-nowrap md:justify-center gap-3 sm:gap-4 md:gap-5 pb-4 px-2 sm:px-0" data-counter-section>
+            <div class="counter-card relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-3 sm:px-4 md:px-5 py-3 sm:py-4 md:py-4 text-center backdrop-blur-xl md:min-w-[160px] md:flex-1">
             <div class="relative z-10">
-            <div class="mx-auto mb-2 sm:mb-3 h-0.5 sm:h-1 w-10 sm:w-14 rounded-full bg-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
-            <span class="typing-target counter-value block text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="100+" data-typing-delay="0">100+</span>
-            <p class="mt-2 sm:mt-2.5 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Attendees</p>
+            <div class="mx-auto mb-1.5 sm:mb-2 h-0.5 w-8 sm:w-10 rounded-full bg-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
+            <span class="typing-target counter-value block text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="100+" data-typing-delay="0">100+</span>
+            <p class="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Attendees</p>
             </div>
             </div>
-            <div class="counter-card relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-center backdrop-blur-xl md:min-w-[200px] md:flex-1">
+            <div class="counter-card relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-3 sm:px-4 md:px-5 py-3 sm:py-4 md:py-4 text-center backdrop-blur-xl md:min-w-[160px] md:flex-1">
             <div class="relative z-10">
-            <div class="mx-auto mb-2 sm:mb-3 h-0.5 sm:h-1 w-10 sm:w-14 rounded-full bg-red-700 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
-            <span class="typing-target counter-value block text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="9" data-typing-delay="150">9</span>
-            <p class="mt-2 sm:mt-2.5 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Countries</p>
+            <div class="mx-auto mb-1.5 sm:mb-2 h-0.5 w-8 sm:w-10 rounded-full bg-red-700 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
+            <span class="typing-target counter-value block text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="9" data-typing-delay="150">9</span>
+            <p class="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Countries</p>
             </div>
             </div>
-            <div class="counter-card relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-center backdrop-blur-xl md:min-w-[200px] md:flex-1">
+            <div class="counter-card relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-3 sm:px-4 md:px-5 py-3 sm:py-4 md:py-4 text-center backdrop-blur-xl md:min-w-[160px] md:flex-1">
             <div class="relative z-10">
-            <div class="mx-auto mb-2 sm:mb-3 h-0.5 sm:h-1 w-10 sm:w-14 rounded-full bg-orange-400 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
-            <span class="typing-target counter-value block text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="60+" data-typing-delay="300">60+</span>
-            <p class="mt-2 sm:mt-2.5 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Sessions</p>
+            <div class="mx-auto mb-1.5 sm:mb-2 h-0.5 w-8 sm:w-10 rounded-full bg-orange-400 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
+            <span class="typing-target counter-value block text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="60+" data-typing-delay="300">60+</span>
+            <p class="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Sessions</p>
             </div>
             </div>
-            <div class="counter-card relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-center backdrop-blur-xl md:min-w-[200px] md:flex-1">
+            <div class="counter-card relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-3 sm:px-4 md:px-5 py-3 sm:py-4 md:py-4 text-center backdrop-blur-xl md:min-w-[160px] md:flex-1">
             <div class="relative z-10">
-            <div class="mx-auto mb-2 sm:mb-3 h-0.5 sm:h-1 w-10 sm:w-14 rounded-full bg-red-400 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
-            <span class="typing-target counter-value block text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="120" data-typing-delay="450">120</span>
-            <p class="mt-2 sm:mt-2.5 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Accepted Papers</p>
+            <div class="mx-auto mb-1.5 sm:mb-2 h-0.5 w-8 sm:w-10 rounded-full bg-red-400 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
+            <span class="typing-target counter-value block text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="120" data-typing-delay="450">120</span>
+            <p class="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Accepted Papers</p>
             </div>
             </div>
             </div>
             </div>
+            
+            <!-- Previous Editions -->
+            <div class="mt-8 sm:mt-10 md:-mt-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 max-w-6xl mx-auto px-2 sm:px-0">
+                    <!-- CASICAM 2020 -->
+                    <a href="https://www.casicam.com/2020" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02] p-4 hover:border-orange-400/40 transition-all duration-500 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-400/50">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-3xl sm:text-4xl font-bold bg-gradient-to-br from-orange-400 to-red-500 bg-clip-text text-transparent">2020</span>
+                                <svg class="w-4 h-4 text-white/40 group-hover:text-orange-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 17L17 7"/>
+                                    <path d="M7 7h10v10"/>
+                                </svg>
+                            </div>
+                            <h4 class="text-base sm:text-lg font-semibold mb-1 text-white/90 group-hover:text-white transition-colors">CASICAM'20</h4>
+                            <p class="text-white/50 text-xs sm:text-sm mb-2">First Edition - Casablanca</p>
+                            <div class="flex items-center gap-1.5 text-[10px] sm:text-xs text-orange-400/70 group-hover:text-orange-400 transition-colors">
+                                <span>Visit website</span>
+                                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m12 5 7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- CASICAM 2022 -->
+                    <a href="https://www.casicam.com/2022" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02] p-4 hover:border-orange-400/40 transition-all duration-500 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-400/50">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-3xl sm:text-4xl font-bold bg-gradient-to-br from-orange-400 to-red-500 bg-clip-text text-transparent">2022</span>
+                                <svg class="w-4 h-4 text-white/40 group-hover:text-orange-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 17L17 7"/>
+                                    <path d="M7 7h10v10"/>
+                                </svg>
+                            </div>
+                            <h4 class="text-base sm:text-lg font-semibold mb-1 text-white/90 group-hover:text-white transition-colors">CASICAM'22</h4>
+                            <p class="text-white/50 text-xs sm:text-sm mb-2">Second Edition - Casablanca</p>
+                            <div class="flex items-center gap-1.5 text-[10px] sm:text-xs text-orange-400/70 group-hover:text-orange-400 transition-colors">
+                                <span>Visit website</span>
+                                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m12 5 7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- CASICAM 2025 -->
+                    <a href="https://www.casicam.com/2025" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02] p-4 hover:border-orange-400/40 transition-all duration-500 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-400/50">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-3xl sm:text-4xl font-bold bg-gradient-to-br from-orange-400 to-red-500 bg-clip-text text-transparent">2025</span>
+                                <svg class="w-4 h-4 text-white/40 group-hover:text-orange-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 17L17 7"/>
+                                    <path d="M7 7h10v10"/>
+                                </svg>
+                            </div>
+                            <h4 class="text-base sm:text-lg font-semibold mb-1 text-white/90 group-hover:text-white transition-colors">CASICAM'25</h4>
+                            <p class="text-white/50 text-xs sm:text-sm mb-2">Third Edition - Casablanca</p>
+                            <div class="flex items-center gap-1.5 text-[10px] sm:text-xs text-orange-400/70 group-hover:text-orange-400 transition-colors">
+                                <span>Visit website</span>
+                                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m12 5 7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
             </div>
             </section>
@@ -3394,6 +3513,49 @@ if (isset($_POST["register"])) {
                 introModal.addEventListener('keydown', e=>{
                     if(e.key!=='Tab') return;
                     const focusable = [...introModal.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')]
+                        .filter(el=>!el.hasAttribute('disabled') && el.offsetParent!==null);
+                    if(!focusable.length) return;
+                    const first = focusable[0];
+                    const last = focusable[focusable.length-1];
+                    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+                    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+                });
+            }
+        
+            // Placeholder modal
+            const placeholderModal = document.getElementById('placeholder-modal');
+            if(placeholderModal){
+                const placeholderOpeners = document.querySelectorAll('[data-placeholder-trigger]');
+                const placeholderClosers = placeholderModal.querySelectorAll('[data-placeholder-close]');
+                const placeholderBackdrop = placeholderModal.querySelector('[data-placeholder-backdrop]');
+                let placeholderLastFocused = null;
+                function openPlaceholder(){
+                    if(placeholderModal.classList.contains('hidden')){
+                        placeholderLastFocused = document.activeElement;
+                        placeholderModal.classList.remove('hidden');
+                        document.body.style.overflow='hidden';
+                        const focusable = placeholderModal.querySelector('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+                        focusable && focusable.focus();
+                    }
+                }
+                function closePlaceholder(){
+                    if(!placeholderModal.classList.contains('hidden')){
+                        placeholderModal.classList.add('hidden');
+                        document.body.style.overflow='';
+                        placeholderLastFocused && placeholderLastFocused.focus();
+                    }
+                }
+                placeholderOpeners.forEach(btn=>{
+                    btn.addEventListener('click', openPlaceholder);
+                    btn.addEventListener('keydown', e=>{ if(e.key==='Enter'|| e.key===' '){ e.preventDefault(); openPlaceholder(); }});
+                });
+                placeholderClosers.forEach(btn=> btn.addEventListener('click', closePlaceholder));
+                placeholderBackdrop && placeholderBackdrop.addEventListener('click', closePlaceholder);
+                
+                document.addEventListener('keydown', e=>{ if(e.key==='Escape') closePlaceholder(); });
+                placeholderModal.addEventListener('keydown', e=>{
+                    if(e.key!=='Tab') return;
+                    const focusable = [...placeholderModal.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')]
                         .filter(el=>!el.hasAttribute('disabled') && el.offsetParent!==null);
                     if(!focusable.length) return;
                     const first = focusable[0];
