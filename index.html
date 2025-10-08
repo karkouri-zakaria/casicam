@@ -787,7 +787,7 @@
             
             <!-- Registration Form -->
             <form action="" method="POST" enctype="multipart/form-data" class="space-y-6">
-            <!-- Personal Information -->
+            <input type="hidden" name="csrf_token" value="d2a22b5e9b38f4c633cda973429356e6855986b76b9472540d720b054028ab21">            <!-- Personal Information -->
             <div class="space-y-4">
             <h4 class="text-base font-semibold text-white">Personal Information</h4>
             <div class="grid md:grid-cols-2 gap-4">
@@ -1114,7 +1114,7 @@
             <div class="grid gap-10 lg:grid-cols-5">
             <!-- Form -->
             <form action="" method="POST" class="space-y-5 lg:col-span-3" aria-labelledby="contact-form-heading">
-            <div class="space-y-1.5">
+            <input type="hidden" name="csrf_token" value="d2a22b5e9b38f4c633cda973429356e6855986b76b9472540d720b054028ab21">            <div class="space-y-1.5">
             <label class="block text-xs uppercase tracking-wide text-white/60">Subject</label>
             <input type="text" name="subject" class="w-full rounded-xl bg-white/10 border border-white/15 
                 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 

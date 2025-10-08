@@ -1,5 +1,18 @@
 <?php
+// Configure secure session cookie parameters before starting session
+session_set_cookie_params([
+    'lifetime' => 0,              // Session cookie (expires when browser closes)
+    'path' => '/',                // Available throughout domain
+    'domain' => '',               // Current domain
+    'secure' => true,             // Only transmit over HTTPS
+    'httponly' => true,           // Not accessible via JavaScript
+    'samesite' => 'Strict'        // Strict same-site policy (strongest CSRF protection)
+]);
+
 session_start();
+
+// Load CSRF protection library
+require_once __DIR__ . '/includes/csrf.php';
 
 // Load admin configuration
 $admin_config = require_once __DIR__ . '/config/admin_config.php';
@@ -11,10 +24,17 @@ function verify_admin_password($password) {
 }
 
 // Handle login
-if ($_POST['action'] === 'login' && isset($_POST['password'])) {
-    if (verify_admin_password($_POST['password'])) {
+if (isset($_POST['action']) && $_POST['action'] === 'login' && isset($_POST['password'])) {
+    // Validate CSRF token for login
+    if (!csrf_validate_token(false)) {
+        $login_error = "Security validation failed. Please try again.";
+    } elseif (verify_admin_password($_POST['password'])) {
         $_SESSION['admin_authenticated'] = true;
         $_SESSION['admin_login_time'] = time();
+        // Regenerate session ID to prevent session fixation
+        session_regenerate_id(true);
+        // Regenerate CSRF token after successful login
+        csrf_regenerate_token();
         header('Location: ' . $_SERVER['PHP_SELF']);
         exit;
     } else {
@@ -23,10 +43,18 @@ if ($_POST['action'] === 'login' && isset($_POST['password'])) {
 }
 
 // Handle logout
-if ($_GET['action'] === 'logout') {
-    session_destroy();
-    header('Location: ' . $_SERVER['PHP_SELF']);
-    exit;
+if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+    // Validate CSRF token for logout
+    if (isset($_GET['csrf_token']) && csrf_validate_token(false)) {
+        session_destroy();
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit;
+    } else {
+        // Still allow logout even without valid token, but destroy session
+        session_destroy();
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit;
+    }
 }
 
 // Check session timeout
@@ -169,6 +197,7 @@ if (!$is_authenticated) {
         
         <form method="POST" action="" class="space-y-6">
             <input type="hidden" name="action" value="login">
+            <?php echo csrf_token_field(); ?>
             
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-300 mb-2">
@@ -263,7 +292,7 @@ if (!$is_authenticated) {
                         Session: <?php echo date('H:i:s', $_SESSION['admin_login_time']); ?>
                     </span>
                     <a 
-                        href="?action=logout" 
+                        href="?action=logout&csrf_token=<?php echo urlencode(csrf_get_token()); ?>" 
                         class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm transition duration-200"
                         onclick="return confirm('Are you sure you want to logout?')"
                     >
@@ -356,6 +385,7 @@ if (!$is_authenticated) {
                         <!-- Single Person Form -->
                         <div id="single-form" class="certificate-mode">
                             <form action="certificate.php" method="POST" class="space-y-6" onsubmit="return validateCertificateForm()">
+                                <?php echo csrf_token_field(); ?>
                                 <input type="hidden" name="cert_type" id="single_cert_type">
                                 <input type="hidden" name="custom_cert_type" id="single_custom_cert_type">
                                 <input type="hidden" name="mode" value="single">
@@ -435,6 +465,7 @@ if (!$is_authenticated) {
                         <!-- Bulk Upload Form -->
                         <div id="bulk-form" class="certificate-mode" style="display: none;">
                             <form action="certificate.php" method="POST" enctype="multipart/form-data" class="space-y-6" onsubmit="return validateCertificateForm()">
+                                <?php echo csrf_token_field(); ?>
                                 <input type="hidden" name="cert_type" id="bulk_cert_type">
                                 <input type="hidden" name="custom_cert_type" id="bulk_custom_cert_type">
                                 <input type="hidden" name="mode" value="bulk">
@@ -646,6 +677,7 @@ if (!$is_authenticated) {
                         </div>
                         
                         <form action="invoice.php" method="POST" class="space-y-6">
+                            <?php echo csrf_token_field(); ?>
                             <div>
                                 <label for="invoice_full_name" class="block text-sm font-medium text-gray-300 mb-2">
                                     Full Name *

@@ -1,4 +1,41 @@
 <?php
+// Authentication check - must be logged in as admin
+
+// Configure secure session cookie parameters before starting session
+session_set_cookie_params([
+    'lifetime' => 0,              // Session cookie (expires when browser closes)
+    'path' => '/',                // Available throughout domain
+    'domain' => '',               // Current domain
+    'secure' => true,             // Only transmit over HTTPS
+    'httponly' => true,           // Not accessible via JavaScript
+    'samesite' => 'Strict'        // Strict same-site policy (strongest CSRF protection)
+]);
+
+session_start();
+
+// Load admin configuration for session timeout
+$admin_config = require_once __DIR__ . '/config/admin_config.php';
+
+// Check if user is authenticated
+if (!isset($_SESSION['admin_authenticated']) || $_SESSION['admin_authenticated'] !== true) {
+    http_response_code(403);
+    die('Access Denied: Authentication required. Please <a href="admin.php">login</a> to access this resource.');
+}
+
+// Check session timeout
+if (isset($_SESSION['admin_login_time'])) {
+    if (time() - $_SESSION['admin_login_time'] > $admin_config['session_timeout']) {
+        session_destroy();
+        http_response_code(403);
+        die('Session Expired: Please <a href="admin.php">login</a> again.');
+    }
+    // Update last activity time
+    $_SESSION['admin_login_time'] = time();
+}
+
+// Load CSRF protection library
+require_once __DIR__ . '/includes/csrf.php';
+
 require_once 'PHPMailer/Exception.php';
 require_once 'PHPMailer/PHPMailer.php';
 require_once 'PHPMailer/SMTP.php';
@@ -56,7 +93,7 @@ function sendPdfEmail($recipientEmail, $recipientName, $subject, $htmlBody, $pdf
         return true;
     } catch (Exception $e) {
         $error = $mail->ErrorInfo ?: $e->getMessage();
-        logEvent("Certificate email failure to {$recipientEmail}: {$error}");
+        //logEvent("Certificate email failure to {$recipientEmail}: {$error}");
         return false;
     }
 }
@@ -344,6 +381,9 @@ function generateSingleCertificate($cert_type, $full_name, $organization, $custo
 
 // Check if form was submitted
 if ($_POST && isset($_POST['cert_type']) && isset($_POST['mode'])) {
+
+    // Validate CSRF token
+    csrf_validate_token(true);
 
     $cert_type = sanitizeText($_POST['cert_type']);
     $custom_cert_type = sanitizeText($_POST['custom_cert_type'] ?? '');

@@ -1,7 +1,22 @@
 <?php
+// Configure secure session cookie parameters before starting session
+session_set_cookie_params([
+    'lifetime' => 0,              // Session cookie (expires when browser closes)
+    'path' => '/',                // Available throughout domain
+    'domain' => '',               // Current domain
+    'secure' => true,             // Only transmit over HTTPS
+    'httponly' => true,           // Not accessible via JavaScript
+    'samesite' => 'Strict'        // Strict same-site policy (strongest CSRF protection)
+]);
+
+session_start(); // Start session for CSRF protection
+
 require_once "PHPMailer/Exception.php";
 require_once "PHPMailer/PHPMailer.php";
 require_once "PHPMailer/SMTP.php";
+
+// Load CSRF protection library
+require_once __DIR__ . '/includes/csrf.php';
 
 use PHPMailer\PHPMailer\{PHPMailer, SMTP, Exception};
 
@@ -73,43 +88,57 @@ function sendEmail($mail, $recipient, $subject, $body, $name)
 
 $message = "";
 if (isset($_POST["send"])) {
-    $name = sanitizeInput($_POST["full-name"]);
-    $email = sanitizeInput($_POST["email"]);
-    $company = sanitizeInput($_POST["company"]);
-    $subject = sanitizeInput($_POST["subject"] ?? "");
-    $msg = sanitizeInput($_POST["message"]);
-    $mail = new PHPMailer(true);
-    $mail->CharSet = "UTF-8";
-    try {
-        $mail->isSMTP();
-        $mail->Host = "smtp.gmail.com";
-        $mail->SMTPAuth = true;
-        $mail->Username = "ziko2319@gmail.com"; // your Gmail
-        $mail->Password = "ezwroeywzfcofwdo"; // app password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port = 465;
-        $body =
-            "
-                <p><strong>Name:</strong> $name</p>
-                <p><strong>Email:</strong> $email</p>
-                <p><strong>Company:</strong> $company</p>
-                <p><strong>Message:</strong><br>" .
-            nl2br($msg) .
-            "</p>
-            ";
-        if (sendEmail($mail, "zakaria.karkouri@outlook.com", $subject, $body, $name)) {
-            $message = "✅ Message sent successfully!";
-        } else {
-            $message = "❌ Failed to send message.";
+    // Validate CSRF token
+    if (!csrf_validate_token(false)) {
+        $message = "❌ Security validation failed. Please try again.";
+    } else {
+        $name = sanitizeInput($_POST["full-name"]);
+        $email = sanitizeInput($_POST["email"]);
+        $company = sanitizeInput($_POST["company"]);
+        $subject = sanitizeInput($_POST["subject"] ?? "");
+        $msg = sanitizeInput($_POST["message"]);
+        $mail = new PHPMailer(true);
+        $mail->CharSet = "UTF-8";
+        try {
+            $mail->isSMTP();
+            $mail->Host = "smtp.gmail.com";
+            $mail->SMTPAuth = true;
+            $mail->Username = "ziko2319@gmail.com"; // your Gmail
+            $mail->Password = "ezwroeywzfcofwdo"; // app password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port = 465;
+            $body =
+                "
+                    <p><strong>Name:</strong> $name</p>
+                    <p><strong>Email:</strong> $email</p>
+                    <p><strong>Company:</strong> $company</p>
+                    <p><strong>Message:</strong><br>" .
+                nl2br($msg) .
+                "</p>
+                ";
+            if (sendEmail($mail, "zakaria.karkouri@outlook.com", $subject, $body, $name)) {
+                $message = "✅ Message sent successfully!";
+            } else {
+                $message = "❌ Failed to send message.";
+            }
+        } catch (Exception $e) {
+            //logEvent("ERROR: Failed to send email - Error: {$mail->ErrorInfo}");
+            $message = "❌ Error: {$mail->ErrorInfo}";
         }
-    } catch (Exception $e) {
-        //logEvent("ERROR: Failed to send email - Error: {$mail->ErrorInfo}");
-        $message = "❌ Error: {$mail->ErrorInfo}";
     }
 }
 
 // Registration Form Handler
 if (isset($_POST["register"])) {
+    // Validate CSRF token
+    if (!csrf_validate_token(false)) {
+        renderStatusPage(
+            'Security Validation Failed',
+            'CSRF token validation failed. Please refresh the page and try again.',
+            false
+        );
+    }
+    
     $email = sanitizeInput($_POST["email"]);
     $other_email = sanitizeInput($_POST["other_email"] ?? "");
     $first_name = sanitizeInput($_POST["first_name"]);
@@ -1000,6 +1029,7 @@ if (isset($_POST["register"])) {
             
             <!-- Registration Form -->
             <form action="" method="POST" enctype="multipart/form-data" class="space-y-6">
+            <?php echo csrf_token_field(); ?>
             <!-- Personal Information -->
             <div class="space-y-4">
             <h4 class="text-base font-semibold text-white">Personal Information</h4>
@@ -1327,6 +1357,7 @@ if (isset($_POST["register"])) {
             <div class="grid gap-10 lg:grid-cols-5">
             <!-- Form -->
             <form action="" method="POST" class="space-y-5 lg:col-span-3" aria-labelledby="contact-form-heading">
+            <?php echo csrf_token_field(); ?>
             <div class="space-y-1.5">
             <label class="block text-xs uppercase tracking-wide text-white/60">Subject</label>
             <input type="text" name="subject" class="w-full rounded-xl bg-white/10 border border-white/15 
