@@ -1799,7 +1799,7 @@ if (isset($_POST["register"])) {
             <!-- Placeholder Modal (Empty - Content Coming Soon) -->
             <div id="placeholder-modal" class="hidden fixed inset-0 z-[200]" role="dialog" aria-modal="true" aria-labelledby="placeholder-modal-title">
             <div class="absolute inset-0 bg-black/85 backdrop-blur-md transition-opacity" data-placeholder-backdrop></div>
-            <div class="relative mx-auto w-full max-w-4xl px-4 md:px-8 py-10 mt-10 md:mt-20 h-[calc(100vh-4rem)] md:h-[calc(100vh-6rem)] flex flex-col">
+            <div class="relative mx-auto w-full max-w-7xl px-4 md:px-8 py-6 md:py-10 mt-6 md:mt-10 h-[calc(100vh-3rem)] md:h-[calc(100vh-5rem)] flex flex-col">
             <div class="relative flex-1 overflow-hidden rounded-3xl border border-white/15 bg-[#101010]/95 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_60px_-10px_rgba(0,0,0,0.9)] backdrop-blur-xl">
             <div class="absolute inset-0 opacity-40 pointer-events-none" style="background:
                 radial-gradient(800px 500px at 85% 20%, rgba(255,255,255,0.12), transparent 70%),
@@ -1807,8 +1807,8 @@ if (isset($_POST["register"])) {
             <div class="relative h-full flex flex-col">
             <div class="flex items-start md:items-center justify-between gap-6 px-6 md:px-10 pt-8 pb-6 border-b border-white/10">
             <div>
-            <h2 id="placeholder-modal-title" class="text-2xl md:text-3xl font-semibold tracking-tight">Content Coming Soon</h2>
-            <p class="text-white/55 mt-2 text-xs md:text-sm max-w-xl">This section will be updated with more information.</p>
+            <h2 id="placeholder-modal-title" class="text-2xl md:text-3xl font-semibold tracking-tight">Welcome to Marrakech</h2>
+            <p class="text-white/55 mt-2 text-xs md:text-sm max-w-xl">Discover the vibrant culture and stunning beauty of Morocco's red city.</p>
             </div>
             <button type="button" class="shrink-0 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-white/40" aria-label="Close" data-placeholder-close>
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1817,16 +1817,65 @@ if (isset($_POST["register"])) {
             </svg>
             </button>
             </div>
-            <div class="flex-1 overflow-auto px-6 md:px-10 pb-10 pt-6 flex items-center justify-center">
-            <div class="text-center max-w-md">
-            <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-white/5 flex items-center justify-center">
-            <svg class="w-10 h-10 text-white/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <path d="M9 9h6v6H9z"/>
+            <div class="flex-1 overflow-auto pb-10">
+            <!-- Video Container - Full Width -->
+            <div class="relative w-full overflow-hidden shadow-2xl mb-8" style="padding-bottom: 56.25%;">
+            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/YRzBoL2qhp8?autoplay=1&mute=1&loop=1&playlist=YRzBoL2qhp8&controls=0&modestbranding=1&rel=0" title="Marrakech - Morocco" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            
+            <!-- Content Section with Padding -->
+            <div class="px-6 md:px-10">
+            <div class="max-w-6xl mx-auto">
+            <div class="prose prose-invert max-w-none">
+            <h3 class="text-2xl font-bold text-white mb-4">Experience the Magic of Marrakech</h3>
+            <p class="text-white/70 text-base leading-relaxed mb-6">
+            Marrakech, known as the "Red City," is a vibrant metropolis that perfectly blends ancient tradition with modern sophistication. As the host city for CASICAM'26, Marrakech offers an unforgettable backdrop for our international conference.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white/5 rounded-xl p-5 border border-white/10">
+            <div class="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center mb-3">
+            <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
             </svg>
             </div>
-            <h3 class="text-xl font-semibold mb-3 text-white/80">Content Under Development</h3>
-            <p class="text-white/50 text-sm leading-relaxed">We're working on bringing you exciting content for this section. Please check back later for updates!</p>
+            <h4 class="text-lg font-semibold text-white mb-2">Rich Heritage</h4>
+            <p class="text-white/60 text-sm">Explore centuries-old medinas, stunning palaces, and UNESCO World Heritage sites.</p>
+            </div>
+            
+            <div class="bg-white/5 rounded-xl p-5 border border-white/10">
+            <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center mb-3">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            </div>
+            <h4 class="text-lg font-semibold text-white mb-2">Modern Infrastructure</h4>
+            <p class="text-white/60 text-sm">World-class conference facilities, international airport, and excellent connectivity.</p>
+            </div>
+            
+            <div class="bg-white/5 rounded-xl p-5 border border-white/10">
+            <div class="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center mb-3">
+            <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
+            </svg>
+            </div>
+            <h4 class="text-lg font-semibold text-white mb-2">Culinary Delights</h4>
+            <p class="text-white/60 text-sm">Savor authentic Moroccan cuisine and world-renowned hospitality.</p>
+            </div>
+            
+            <div class="bg-white/5 rounded-xl p-5 border border-white/10">
+            <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center mb-3">
+            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            </div>
+            <h4 class="text-lg font-semibold text-white mb-2">Vibrant Culture</h4>
+            <p class="text-white/60 text-sm">Experience bustling souks, traditional music, and warm Moroccan hospitality.</p>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
             </div>
             </div>
             </div>
