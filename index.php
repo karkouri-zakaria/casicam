@@ -2170,28 +2170,28 @@ if (isset($_POST["register"])) {
             <div class="counter-card relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-3 sm:px-4 md:px-5 py-3 sm:py-4 md:py-4 text-center backdrop-blur-xl md:min-w-[160px] md:flex-1">
             <div class="relative z-10">
             <div class="mx-auto mb-1.5 sm:mb-2 h-0.5 w-8 sm:w-10 rounded-full bg-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
-            <span class="typing-target counter-value block text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="100+" data-typing-delay="0">100+</span>
+            <span class="typing-target counter-value block text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="300+" data-typing-delay="0">300+</span>
             <p class="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Attendees</p>
             </div>
             </div>
             <div class="counter-card relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-3 sm:px-4 md:px-5 py-3 sm:py-4 md:py-4 text-center backdrop-blur-xl md:min-w-[160px] md:flex-1">
             <div class="relative z-10">
             <div class="mx-auto mb-1.5 sm:mb-2 h-0.5 w-8 sm:w-10 rounded-full bg-red-700 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
-            <span class="typing-target counter-value block text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="9" data-typing-delay="150">9</span>
+            <span class="typing-target counter-value block text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="14" data-typing-delay="150">14</span>
             <p class="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Countries</p>
             </div>
             </div>
             <div class="counter-card relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-3 sm:px-4 md:px-5 py-3 sm:py-4 md:py-4 text-center backdrop-blur-xl md:min-w-[160px] md:flex-1">
             <div class="relative z-10">
             <div class="mx-auto mb-1.5 sm:mb-2 h-0.5 w-8 sm:w-10 rounded-full bg-orange-400 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
-            <span class="typing-target counter-value block text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="60+" data-typing-delay="300">60+</span>
+            <span class="typing-target counter-value block text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="350+" data-typing-delay="300">350+</span>
             <p class="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Sessions</p>
             </div>
             </div>
             <div class="counter-card relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent px-3 sm:px-4 md:px-5 py-3 sm:py-4 md:py-4 text-center backdrop-blur-xl md:min-w-[160px] md:flex-1">
             <div class="relative z-10">
             <div class="mx-auto mb-1.5 sm:mb-2 h-0.5 w-8 sm:w-10 rounded-full bg-red-400 shadow-[0_0_12px_rgba(249,115,22,0.4)]"></div>
-            <span class="typing-target counter-value block text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="120" data-typing-delay="450">120</span>
+            <span class="typing-target counter-value block text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]" data-counter data-typing-text="200" data-typing-delay="450">200</span>
             <p class="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/50">Accepted Papers</p>
             </div>
             </div>
