@@ -362,188 +362,487 @@ if (isset($_POST["register"])) {
             </div>
         </header>
         <main class="pt-20 lg:pt-20">
-            <!-- section 1-->
-            <section id="overview">
-                <div class="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-40 py-6 md:py-12">
-                    <!-- First Row - Main Hero and Side Cards -->
-                    <div class="flex flex-col lg:flex-row items-stretch justify-center gap-6 min-h-[500px] mb-12">
-                        <!-- Main Hero Card (Left - Large) -->
-                        <div class="flex-1 lg:flex-[3] relative overflow-hidden rounded-2xl md:rounded-3xl glass card-hover shadow-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="intro-modal" data-intro-trigger style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">
-                            <div class="absolute inset-0 opacity-80" style="background-image: url('assets/images/card1.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
-                            <div class="absolute inset-0 bg-black/60"></div>
-                            <div class="relative z-10 p-6 sm:p-8 md:px-10 lg:px-14 h-full flex flex-col justify-center min-h-[400px] md:min-h-[500px]">
-                                <div class="flex items-center justify-start gap-2 sm:gap-3 mb-4 sm:mb-6">
-                                    <span class="inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-white/10 border border-white/15 shadow-lg">
-                                        <svg class="w-5 h-5 sm:w-7 sm:h-7 text-white/85" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                            <path d="M12 3 4.5 7v10L12 21l7.5-4V7L12 3Z" />
-                                            <path d="M4.5 7 12 11l7.5-4" />
-                                            <path d="M12 21V11" />
-                                        </svg>
-                                    </span>
-                                    <p class="text-xs sm:text-sm font-medium uppercase tracking-[0.15em] sm:tracking-[0.28em] text-white/70">Immersive Summit</p>
-                                </div>
-                                <h1 class="leading-tight max-w-full">
-                                    <span id="hero-title" class="typing-target block uppercase text-6xl sm:text-7xl md:text-6xl lg:text-7xl xl:!text-[7.5rem] font-bold" data-typing-text="CASICAM" aria-label="CASICAM" style="letter-spacing: 0;">CASICAM</span>
-                                    <span id="hero-year" class="typing-target block text-5xl sm:text-6xl md:text-5xl lg:text-6xl xl:text-[6.5rem] font-semibold mt-2 sm:mt-4" data-typing-text="2026" aria-label="2026" style="letter-spacing: 0.05em; min-height: 1em;">2026</span>
-                                </h1>
-                                <p class="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold mt-8 sm:mt-12 md:mt-16 text-white/90">
-                                    April 23–25
-                                </p>
-                                <div class="mt-6 sm:mt-auto flex items-center">
-                                    <p class="text-lg sm:text-xl md:text-2xl font-semibold">Morocco</p>
-                                    <img src="assets/images/MAR.svg" alt="Morocco Flag" class="h-6 sm:h-8 w-auto mx-2">                    
-                                </div>
-                            </div>
-                            <!-- Decorative elements -->
-                            <div class="absolute top-0 right-0 w-1/2 h-full opacity-30">
-                                <div class="absolute top-1/4 right-1/4 w-64 h-64 bg-white/20 rounded-full blur-xl"></div>
-                                <div class="absolute bottom-1/4 right-1/3 w-48 h-48 bg-white/10 rounded-full blur-lg"></div>
+            <!-- Cinematic Hero Section -->
+            <section id="overview" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+                <!-- Animated Background -->
+                <div class="absolute inset-0 z-0">
+                    <!-- Base Image with Parallax -->
+                    <div class="hero-parallax absolute inset-0 opacity-70" style="background-image: url('assets/images/card1.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+                    
+                    <!-- Animated Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-transparent"></div>
+                    
+                    <!-- Animated Particles -->
+                    <div class="particles-container absolute inset-0">
+                        <div class="particle particle-1"></div>
+                        <div class="particle particle-2"></div>
+                        <div class="particle particle-3"></div>
+                        <div class="particle particle-4"></div>
+                        <div class="particle particle-5"></div>
+                    </div>
+                    
+                    <!-- Grid Overlay -->
+                    <div class="absolute inset-0 opacity-10" style="background-image: 
+                        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+                        background-size: 50px 50px;">
+                    </div>
+                    
+                    <!-- Spotlight Effect -->
+                    <div class="spotlight absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-orange-500/20 rounded-full blur-[120px] animate-pulse"></div>
+                </div>
+
+                <!-- Hero Content -->
+                <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+                    <div class="text-center space-y-8">
+                        <!-- Floating Badge -->
+                        <div class="hero-badge inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl">
+                            <span class="relative flex h-3 w-3">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+                            </span>
+                            <span class="text-sm font-semibold uppercase tracking-[0.3em] text-white/90">4th International Conference</span>
+                        </div>
+
+                        <!-- Main Title with Cinematic Reveal -->
+                        <div class="hero-title-container space-y-4">
+                            <h1 class="hero-title text-7xl sm:text-8xl md:text-9xl lg:text-[12rem] font-black uppercase tracking-tighter leading-none">
+                                <span class="inline-block hero-title-line" style="background: linear-gradient(135deg, #fff 0%, #f97316 50%, #dc2626 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 80px rgba(249, 115, 22, 0.3);">
+                                    CASICAM
+                                </span>
+                            </h1>
+                            <div class="hero-year text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold">
+                                <span class="inline-block bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent">
+                                    2026
+                                </span>
                             </div>
                         </div>
-                        <!-- Placeholder Card -->
-                        <div class="flex-1 rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 relative overflow-hidden min-h-[300px] sm:min-h-[350px]" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="placeholder-modal" data-placeholder-trigger style="background-image: url('assets/images/card2.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);">
-                            <div class="absolute inset-0 bg-black/50 pointer-events-none"></div>
-                            <div class="relative z-10 h-full flex flex-col">
-                                <div class="mb-4">
-                                    <h3 class="text-base sm:text-lg md:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-white flex flex-wrap items-center gap-2">Discover <span class="inline-block text-xs font-normal bg-white/10 px-2 py-1 rounded-full tracking-wide whitespace-nowrap">CASICAM'26</span></h3>
-                                    <h2 class="text-2xl sm:text-3xl md:text-2xl xl:text-3xl font-semibold mt-4 sm:mt-6">Welcome to<br><span class="text-3xl sm:text-4xl md:text-3xl xl:text-4xl">Marrakech</span></h2>
-                                </div>
-                                <div class="flex justify-end mt-auto">
-                                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                                        <svg class="w-7 h-7 text-white/80 animate-calendar" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                            <path d="M12 2.75l1.902 3.857 4.26.62-3.08 2.997.727 4.243L12 12.96l-3.809 2.507.727-4.243-3.08-2.997 4.26-.62L12 2.75Z" />
-                                        </svg>
-                                    </div>
-                                </div>
+
+                        <!-- Subtitle with Typewriter Effect -->
+                        <p class="hero-subtitle text-xl sm:text-2xl md:text-3xl font-light text-white/80 max-w-3xl mx-auto leading-relaxed">
+                            Computer Aided Systems for Innovative and Collaborative Additive Manufacturing
+                        </p>
+
+                        <!-- Event Details -->
+                        <div class="hero-details flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-lg sm:text-xl md:text-2xl font-semibold pt-8">
+                            <div class="flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                                <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                <span class="text-white/90">April 23–25</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                                <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 21s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 7.2c0 7.3-8 11.8-8 11.8z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                <span class="text-white/90">Marrakech, Morocco</span>
+                                <img src="assets/images/MAR.svg" alt="Morocco" class="h-6 w-auto">
                             </div>
                         </div>
-                        <!-- Calender Cards -->
-                        <div class="flex flex-col gap-4 sm:gap-6 flex-1">
-                            <div class="glass rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover flex-1 flex flex-col shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[120px] sm:min-h-[160px]" style="background-image: url('https://assets-global.website-files.com/647f69521b16ed3be0ca202f/6481047d9e517a7ebeeeda6e_Cell%20Background%203-p-2000.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="calendar-modal" data-calendar-trigger>
-                                <div class="mb-3 sm:mb-4">
-                                    <h2 class="text-xl sm:text-2xl font-bold tracking-wide flex flex-wrap items-center gap-2">Calendar
-                                        <span class="inline-block text-xs font-normal bg-white/10 px-2 py-1 rounded-full tracking-wide">Important Dates</span>
-                                    </h2>
-                                </div>
-                                <div class="mt-auto flex justify-between items-center text-xs sm:text-sm text-white/70">
-                                    <p class="max-w-[70%] leading-snug">Review the key conference milestones and submission deadlines.</p>
-                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                        <svg class="w-5 h-5 sm:w-7 sm:h-7 text-white/80 animate-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                            <rect x="3.75" y="5.75" width="16.5" height="14.5" rx="2.25" />
-                                            <path d="M8 3.5v4.5M16 3.5v4.5M3.75 11.5h16.5" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="glass rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover flex-1 flex flex-col shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[120px] sm:min-h-[160px]" style="background-image: url('https://cdn.prod.website-files.com/647f69521b16ed3be0ca202f/6481047da7e9bb65a94e048f_Cell%20Background%204.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="locations-modal" data-locations-trigger>
-                                <div class="mb-2 sm:mb-3">
-                                    <h2 class="text-xl sm:text-2xl font-bold tracking-wide flex flex-wrap items-center gap-2">Locations <span class="inline-block text-xs font-normal bg-white/10 px-2 py-1 rounded-full tracking-wide">Maps</span></h2>
-                                </div>
-                                <p class="text-xs sm:text-sm text-white/70 mb-3 sm:mb-4 leading-snug max-w-[80%]">Discover the main venues and convenient logistics hubs.</p>
-                                <div class="mt-auto flex justify-end">
-                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                        <svg class="w-5 h-5 sm:w-7 sm:h-7 text-white/80 animate-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                            <path d="M12 21s7-6.58 7-11a7 7 0 0 0-14 0c0 4.42 7 11 7 11Z" />
-                                            <circle cx="12" cy="10" r="2.5" />
-                                        </svg>
-                                    </div>
-                                </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="hero-cta flex flex-wrap items-center justify-center gap-4 pt-8">
+                            <button type="button" data-intro-trigger class="group relative px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white font-bold text-lg uppercase tracking-wider shadow-2xl shadow-orange-500/50 hover:shadow-orange-500/70 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-400/50">
+                                <span class="relative z-10">Discover Conference</span>
+                                <div class="absolute inset-0 rounded-full bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </button>
+                            <button type="button" data-registration-trigger class="px-8 py-4 rounded-full border-2 border-white/30 text-white font-bold text-lg uppercase tracking-wider backdrop-blur-sm hover:bg-white/10 hover:border-white/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/40">
+                                Register Now
+                            </button>
+                        </div>
+
+                        <!-- Scroll Indicator -->
+                        <div class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+                            <div class="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
+                                <div class="w-1 h-3 bg-white/50 rounded-full animate-pulse"></div>
                             </div>
                         </div>
                     </div>
-                    <!-- Second Row - Three Equal Cards -->
-                    <div class="flex flex-col lg:flex-row items-stretch justify-center gap-4 sm:gap-6 mb-8 sm:mb-12">
-                        <!-- Registration Card -->
-                        <div class="glass rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover flex-1 shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[120px] sm:min-h-auto" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="registration-modal" data-registration-trigger style="background-image: url('https://cdn.prod.website-files.com/647f69521b16ed3be0ca202f/6481047da7e9bb65a94e048f_Cell%20Background%204.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-                            <div class="mb-3">
-                                <h2 class="text-xl sm:text-2xl font-bold tracking-wide flex flex-wrap items-center gap-2">Registration <span class="inline-block text-xs font-normal bg-white/10 px-2 py-1 rounded-full tracking-wide">Fees</span></h2>
+                </div>
+
+                <!-- Side Feature Cards -->
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-20">
+                    <!-- Calendar Card -->
+                    <div class="feature-card-mini glass rounded-2xl p-4 w-48 cursor-pointer hover:scale-105 transition-all duration-300 shadow-2xl backdrop-blur-xl border border-white/10" data-calendar-trigger>
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
                             </div>
-                            <p class="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 max-w-[85%] leading-snug">Browse participation categories, fees and conditions.</p>
-                            <div class="mt-auto flex justify-end">
-                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-5 h-5 sm:w-7 sm:h-7 text-white/80 animate-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <path d="M4.5 6h15a1 1 0 0 1 1 1v2a2 2 0 1 0 0 4v2a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-2a2 2 0 1 0 0-4V7a1 1 0 0 1 1-1Z" />
-                                        <path d="M12 7v10" />
-                                    </svg>
+                            <h3 class="font-bold text-sm">Calendar</h3>
+                        </div>
+                        <p class="text-xs text-white/60">Important dates & deadlines</p>
+                    </div>
+                    
+                    <!-- Locations Card -->
+                    <div class="feature-card-mini glass rounded-2xl p-4 w-48 cursor-pointer hover:scale-105 transition-all duration-300 shadow-2xl backdrop-blur-xl border border-white/10" data-locations-trigger>
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 21s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 7.2c0 7.3-8 11.8-8 11.8z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold text-sm">Locations</h3>
+                        </div>
+                        <p class="text-xs text-white/60">Venues & maps</p>
+                    </div>
+                </div>
+
+                <style>
+                    /* Cinematic Animations */
+                    @keyframes fadeInUp {
+                        from {
+                            opacity: 0;
+                            transform: translateY(30px);
+                        }
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    @keyframes scaleIn {
+                        from {
+                            opacity: 0;
+                            transform: scale(0.9);
+                        }
+                        to {
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                    }
+
+                    @keyframes float {
+                        0%, 100% { transform: translateY(0px); }
+                        50% { transform: translateY(-20px); }
+                    }
+
+                    @keyframes particleFloat {
+                        0%, 100% { 
+                            transform: translate(0, 0) rotate(0deg);
+                            opacity: 0.3;
+                        }
+                        50% { 
+                            transform: translate(100px, -100px) rotate(180deg);
+                            opacity: 0.6;
+                        }
+                    }
+
+                    /* Hero Elements */
+                    .hero-badge {
+                        animation: fadeInUp 0.8s ease-out 0.2s both;
+                    }
+
+                    .hero-title-container {
+                        animation: scaleIn 1s ease-out 0.4s both;
+                    }
+
+                    .hero-subtitle {
+                        animation: fadeInUp 0.8s ease-out 0.8s both;
+                    }
+
+                    .hero-details {
+                        animation: fadeInUp 0.8s ease-out 1s both;
+                    }
+
+                    .hero-cta {
+                        animation: fadeInUp 0.8s ease-out 1.2s both;
+                    }
+
+                    .scroll-indicator {
+                        animation: fadeInUp 0.8s ease-out 1.4s both, float 3s ease-in-out infinite;
+                    }
+
+                    .feature-card-mini {
+                        animation: fadeInUp 0.8s ease-out 1.6s both;
+                    }
+
+                    /* Particles */
+                    .particle {
+                        position: absolute;
+                        width: 4px;
+                        height: 4px;
+                        background: rgba(249, 115, 22, 0.6);
+                        border-radius: 50%;
+                        box-shadow: 0 0 20px rgba(249, 115, 22, 0.8);
+                    }
+
+                    .particle-1 {
+                        top: 20%;
+                        left: 10%;
+                        animation: particleFloat 8s ease-in-out infinite;
+                    }
+
+                    .particle-2 {
+                        top: 40%;
+                        right: 15%;
+                        animation: particleFloat 10s ease-in-out infinite 1s;
+                    }
+
+                    .particle-3 {
+                        bottom: 30%;
+                        left: 20%;
+                        animation: particleFloat 12s ease-in-out infinite 2s;
+                    }
+
+                    .particle-4 {
+                        top: 60%;
+                        right: 30%;
+                        animation: particleFloat 9s ease-in-out infinite 1.5s;
+                    }
+
+                    .particle-5 {
+                        bottom: 20%;
+                        right: 10%;
+                        animation: particleFloat 11s ease-in-out infinite 0.5s;
+                    }
+
+                    /* Parallax Effect */
+                    .hero-parallax {
+                        transition: transform 0.5s ease-out;
+                    }
+
+                    /* Spotlight Animation */
+                    @keyframes spotlightPulse {
+                        0%, 100% { 
+                            transform: translate(-50%, 0) scale(1);
+                            opacity: 0.2;
+                        }
+                        50% { 
+                            transform: translate(-50%, -20px) scale(1.1);
+                            opacity: 0.3;
+                        }
+                    }
+
+                    .spotlight {
+                        animation: spotlightPulse 4s ease-in-out infinite;
+                    }
+                </style>
+
+                <script>
+                    // Parallax Effect on Mouse Move
+                    document.addEventListener('mousemove', (e) => {
+                        const parallax = document.querySelector('.hero-parallax');
+                        if (parallax) {
+                            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+                            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+                            parallax.style.transform = `translate(${x}px, ${y}px) scale(1.1)`;
+                        }
+                    });
+
+                    // Smooth Scroll for Indicator
+                    document.querySelector('.scroll-indicator')?.addEventListener('click', () => {
+                        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+                    });
+                </script>
+            </section>
+
+            <!-- Quick Access Cards Section -->
+            <section class="relative z-30 pt-20 md:pt-24">
+                <div class="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-40 pb-12">
+                    <!-- First Row - 3 Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+                        <!-- Registration Card -->
+                        <div class="group glass rounded-2xl md:rounded-3xl p-6 sm:p-8 card-hover shadow-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[220px] backdrop-blur-2xl relative overflow-hidden" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="registration-modal" data-registration-trigger style="background: linear-gradient(135deg, rgba(249, 115, 22, 0.05) 0%, rgba(220, 38, 38, 0.05) 100%);">
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <div class="absolute top-0 right-0 w-40 h-40 bg-orange-500/20 rounded-full blur-3xl"></div>
+                            </div>
+                            <div class="relative z-10 h-full flex flex-col">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-orange-500/30 to-red-500/30 rounded-2xl flex items-center justify-center border border-orange-400/40 group-hover:scale-110 transition-transform duration-300">
+                                        <svg class="w-7 h-7 text-orange-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M4.5 6h15a1 1 0 0 1 1 1v2a2 2 0 1 0 0 4v2a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-2a2 2 0 1 0 0-4V7a1 1 0 0 1 1-1Z" />
+                                            <path d="M12 7v10" />
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-orange-400/90 mb-1">Register</span>
+                                        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-white">Registration</h2>
+                                    </div>
+                                </div>
+                                <p class="text-white/70 text-sm leading-relaxed mb-4 flex-grow">
+                                    Browse participation categories, registration fees, and terms & conditions.
+                                </p>
+                                <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/10">
+                                    <span class="text-xs text-white/50 uppercase tracking-wider">Secure Payment</span>
+                                    <div class="flex items-center gap-2 text-orange-400 group-hover:translate-x-1 transition-transform">
+                                        <span class="text-sm font-semibold">View Details</span>
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Submission Card -->
-                        <div class="relative overflow-hidden rounded-2xl md:rounded-3xl glass card-hover flex-1 shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[120px] sm:min-h-auto" style="background-image: url('https://assets-global.website-files.com/647f69521b16ed3be0ca202f/6481047d1919494a7dfe8d82_Cell%20Background%207-p-2000.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="submission-modal" data-submission-trigger>
-                            <div class="absolute inset-0 opacity-60"></div>
-                            <div class="relative z-10 p-5 sm:p-6 h-full flex flex-col">
-                                <div class="mb-3">
-                                    <h2 class="text-xl sm:text-2xl font-bold tracking-wide flex flex-wrap items-center gap-2">Submission <span class="inline-block text-xs font-normal bg-white/10 px-2 py-1 rounded-full tracking-wide">Guidelines</span></h2>
-                                </div>
-                                <p class="text-white/70 text-xs sm:text-sm mb-3 sm:mb-4 max-w-[85%] leading-snug">Instructions for full papers, templates & presentation rules.</p>
-                                <div class="mt-auto flex justify-end">
-                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                        <svg class="w-5 h-5 sm:w-7 sm:h-7 text-white/80 animate-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <div class="group glass rounded-2xl md:rounded-3xl p-6 sm:p-8 card-hover shadow-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[220px] backdrop-blur-2xl relative overflow-hidden" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="submission-modal" data-submission-trigger style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%);">
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <div class="absolute top-0 right-0 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl"></div>
+                            </div>
+                            <div class="relative z-10 h-full flex flex-col">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-2xl flex items-center justify-center border border-blue-400/40 group-hover:scale-110 transition-transform duration-300">
+                                        <svg class="w-7 h-7 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M12 6.5v9" />
                                             <path d="M8.5 10l3.5-3.5L15.5 10" />
                                             <path d="M5 19.25h14" />
                                             <path d="M8 13.5v5.75h8V13.5" />
                                         </svg>
                                     </div>
+                                    <div class="flex-1">
+                                        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-blue-400/90 mb-1">Submit Paper</span>
+                                        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-white">Submission</h2>
+                                    </div>
+                                </div>
+                                <p class="text-white/70 text-sm leading-relaxed mb-4 flex-grow">
+                                    Complete guidelines for full papers, templates, and presentation rules.
+                                </p>
+                                <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/10">
+                                    <span class="text-xs text-white/50 uppercase tracking-wider">PDF Template</span>
+                                    <div class="flex items-center gap-2 text-blue-400 group-hover:translate-x-1 transition-transform">
+                                        <span class="text-sm font-semibold">Guidelines</span>
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="absolute bottom-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-lg transform translate-x-8 translate-y-8"></div>
                         </div>
+
                         <!-- Contact Card -->
-                        <div class="glass rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover flex-1 shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[120px] sm:min-h-auto" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="contact-modal" data-contact-trigger style="background-image: url('https://cdn.prod.website-files.com/647f69521b16ed3be0ca202f/6481047da7e9bb65a94e048f_Cell%20Background%204.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-                            <div class="mb-3">
-                                <h2 class="text-xl sm:text-2xl font-bold tracking-wide flex flex-wrap items-center gap-2">Contact <span class="inline-block text-xs font-normal bg-white/10 px-2 py-1 rounded-full tracking-wide">Form</span></h2>
+                        <div class="group glass rounded-2xl md:rounded-3xl p-6 sm:p-8 card-hover shadow-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[220px] backdrop-blur-2xl relative overflow-hidden" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="contact-modal" data-contact-trigger style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.05) 0%, rgba(219, 39, 119, 0.05) 100%);">
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <div class="absolute top-0 right-0 w-40 h-40 bg-pink-500/20 rounded-full blur-3xl"></div>
                             </div>
-                            <p class="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 max-w-[85%] leading-snug">Reach the organizing committee directly.</p>
-                            <div class="mt-auto flex justify-end">
-                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-5 h-5 sm:w-7 sm:h-7 text-white/80 animate-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <path d="M5.5 5.5h13a1.5 1.5 0 0 1 1.5 1.5v7a1.5 1.5 0 0 1-1.5 1.5h-4.5l-3.5 3v-3H5.5A1.5 1.5 0 0 1 4 14V7a1.5 1.5 0 0 1 1.5-1.5Z" />
-                                        <path d="M8 10.25h8" />
-                                        <path d="M8 12.75h5" />
-                                    </svg>
+                            <div class="relative z-10 h-full flex flex-col">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-pink-500/30 to-rose-500/30 rounded-2xl flex items-center justify-center border border-pink-400/40 group-hover:scale-110 transition-transform duration-300">
+                                        <svg class="w-7 h-7 text-pink-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5.5 5.5h13a1.5 1.5 0 0 1 1.5 1.5v7a1.5 1.5 0 0 1-1.5 1.5h-4.5l-3.5 3v-3H5.5A1.5 1.5 0 0 1 4 14V7a1.5 1.5 0 0 1 1.5-1.5Z" />
+                                            <path d="M8 10.25h8" />
+                                            <path d="M8 12.75h5" />
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-pink-400/90 mb-1">Get in Touch</span>
+                                        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-white">Contact</h2>
+                                    </div>
+                                </div>
+                                <p class="text-white/70 text-sm leading-relaxed mb-4 flex-grow">
+                                    Reach out to the organizing committee directly for inquiries and support.
+                                </p>
+                                <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/10">
+                                    <span class="text-xs text-white/50 uppercase tracking-wider">Quick Response</span>
+                                    <div class="flex items-center gap-2 text-pink-400 group-hover:translate-x-1 transition-transform">
+                                        <span class="text-sm font-semibold">Send Message</span>
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- fourth Row -->
-                    <div class="flex flex-col lg:flex-row items-stretch justify-center gap-4 sm:gap-6 mb-8 sm:mb-12">
-                        <!-- Committees Card -->
-                        <div class="glass rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover shadow-xl flex-1 lg:flex-none lg:basis-2/3 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[120px] sm:min-h-auto" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="committees-modal" data-committees-trigger  style="background-image: url('https://assets-global.website-files.com/647f69521b16ed3be0ca202f/6481047da7e9bb65a94e048f_Cell%20Background%204-p-2000.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-                            <div class="mb-3">
-                                <h2 class="text-xl sm:text-2xl font-bold tracking-wide flex flex-wrap items-center gap-2">Committees <span class="inline-block text-xs font-normal bg-white/10 px-2 py-1 rounded-full tracking-wide">Overview</span></h2>
-                            </div>
-                            <p class="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 max-w-[85%] leading-snug">Honorary, general, technical, organizing & scientific committees.</p>
-                            <div class="mt-auto flex justify-end">
-                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-5 h-5 sm:w-7 sm:h-7 text-white/80 animate-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <path d="M12 21c4.8-2.4 7-5.2 7-9.5V5.75L12 3 5 5.75V11.5c0 4.3 2.2 7.1 7 9.5Z" />
-                                        <path d="M9.5 10.5 11.25 12.5 14.5 8.75" />
-                                    </svg>
+
+                    <!-- Second Row - 3 Feature Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-4 sm:mt-6">
+                        <!-- Marrakech Welcome Card -->
+                        <div class="group glass rounded-2xl md:rounded-3xl p-6 sm:p-8 card-hover shadow-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[240px] backdrop-blur-2xl relative overflow-hidden md:col-span-2" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="placeholder-modal" data-placeholder-trigger style="background-image: url('assets/images/card2.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                            <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-transparent group-hover:from-black/60 transition-all duration-500"></div>
+                            <div class="relative z-10 h-full flex flex-col">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-orange-500/30 rounded-2xl flex items-center justify-center border border-orange-400/40 group-hover:rotate-12 transition-transform duration-300">
+                                        <svg class="w-7 h-7 text-orange-400" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2.75l1.902 3.857 4.26.62-3.08 2.997.727 4.243L12 12.96l-3.809 2.507.727-4.243-3.08-2.997 4.26-.62L12 2.75Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-orange-400/90 mb-2">Discover CASICAM'26</span>
+                                        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
+                                            Welcome to<br>
+                                            <span class="text-4xl sm:text-5xl bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent">Marrakech</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <p class="text-white/80 text-sm sm:text-base leading-relaxed mb-6 max-w-xl">
+                                    Experience the vibrant culture, stunning architecture, and warm hospitality of Morocco's enchanting red city—your perfect conference destination.
+                                </p>
+                                <div class="mt-auto flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="assets/images/MAR.svg" alt="Morocco" class="h-6 w-auto">
+                                        <span class="text-xs text-white/60 uppercase tracking-wider">Host City</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-white group-hover:text-orange-400 transition-colors">
+                                        <span class="text-sm font-bold">Explore City</span>
+                                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Conference Program Card -->
-                        <div class="glass rounded-2xl md:rounded-3xl p-5 sm:p-6 card-hover shadow-xl flex-1 lg:flex-none lg:basis-1/3 min-h-[120px] sm:min-h-auto flex flex-col relative" style="background-image: url('https://assets-global.website-files.com/647f69521b16ed3be0ca202f/6481047d7a9cb3c36e37ea43_Cell%20Background%205-p-2000.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                        <div class="group glass rounded-2xl md:rounded-3xl p-6 sm:p-8 card-hover shadow-2xl min-h-[240px] backdrop-blur-2xl relative overflow-hidden" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);">
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl"></div>
+                            </div>
+                            
                             <!-- Coming Soon Badge -->
-                            <div class="absolute bottom-3 left-3 sm:bottom-4 sm:left-4">
-                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r from-orange-500/20 to-pink-500/20 border border-orange-400/30 backdrop-blur-sm">
+                            <div class="absolute top-6 right-6">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-400/40 backdrop-blur-sm">
                                     <span class="relative flex h-2 w-2">
-                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                                        <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
                                     </span>
-                                    <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-orange-200">Available Soon</span>
+                                    <span class="text-xs font-bold uppercase tracking-wider text-purple-200">Soon</span>
                                 </span>
                             </div>
-                            <div class="flex items-start justify-between gap-3 mb-3">
-                                <div class="flex-1">
-                                    <h2 class="text-xl sm:text-2xl font-bold tracking-wide mb-1">Conference Program</h2>
-                                    <p class="text-gray-400 text-xs sm:text-sm leading-snug">Detailed schedule of sessions and events</p>
+
+                            <div class="relative z-10 h-full flex flex-col">
+                                <div class="mb-4">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-purple-500/30 to-blue-500/30 rounded-2xl flex items-center justify-center border border-purple-400/40 mb-4">
+                                        <svg class="w-7 h-7 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                            <line x1="16" y1="2" x2="16" y2="6"/>
+                                            <line x1="8" y1="2" x2="8" y2="6"/>
+                                            <line x1="3" y1="10" x2="21" y2="10"/>
+                                            <path d="M8 14h.01"/>
+                                            <path d="M12 14h.01"/>
+                                            <path d="M16 14h.01"/>
+                                            <path d="M8 18h.01"/>
+                                            <path d="M12 18h.01"/>
+                                        </svg>
+                                    </div>
+                                    <span class="inline-block text-xs font-semibold uppercase tracking-wider text-purple-400/90 mb-2">Schedule</span>
+                                    <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-white">Conference<br>Program</h2>
                                 </div>
-                                <img src="https://www.freepnglogos.com/uploads/qr-code-png/qr-code-code-encode-mobile-code-code-icon-37.png" alt="QR Code" class="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 opacity-80">
+                                
+                                <p class="text-white/70 text-sm leading-relaxed mb-4 flex-grow">
+                                    Detailed schedule of sessions, keynotes, and special events.
+                                </p>
+
+                                <div class="mt-auto">
+                                    <div class="w-20 h-20 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center opacity-50">
+                                        <svg class="w-10 h-10 text-white/30" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M3 5h18v14H3V5zm2 2v10h14V7H5zm2 2h10v2H7V9zm0 4h7v2H7v-2z"/>
+                                        </svg>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
             </section>
             <!-- Calendar Modal -->
             <div id="calendar-modal" class="hidden fixed inset-0 z-[200]" role="dialog" aria-modal="true" aria-labelledby="calendar-modal-title">
