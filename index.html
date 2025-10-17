@@ -826,7 +826,7 @@
             
             <!-- Registration Form -->
             <form action="" method="POST" enctype="multipart/form-data" class="space-y-6">
-            <input type="hidden" name="csrf_token" value="a616410ac3e498e23e94a53a07a7c71207ce6cc310118f252fb2b63da77fc365">            <!-- Personal Information -->
+            <input type="hidden" name="csrf_token" value="59f1d02b478b1e1257d40a0a2df84193e7a14aea0d9fa5f0d4c48be2a667f699">            <!-- Personal Information -->
             <div class="space-y-4">
             <h4 class="text-base font-semibold text-white">Personal Information</h4>
             <div class="grid md:grid-cols-2 gap-4">
@@ -1153,7 +1153,7 @@
             <div class="grid gap-10 lg:grid-cols-5">
             <!-- Form -->
             <form action="" method="POST" class="space-y-5 lg:col-span-3" aria-labelledby="contact-form-heading">
-            <input type="hidden" name="csrf_token" value="a616410ac3e498e23e94a53a07a7c71207ce6cc310118f252fb2b63da77fc365">            <div class="space-y-1.5">
+            <input type="hidden" name="csrf_token" value="59f1d02b478b1e1257d40a0a2df84193e7a14aea0d9fa5f0d4c48be2a667f699">            <div class="space-y-1.5">
             <label class="block text-xs uppercase tracking-wide text-white/60">Subject</label>
             <input type="text" name="subject" class="w-full rounded-xl bg-white/10 border border-white/15 
                 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 
@@ -3452,10 +3452,20 @@
         });
 
         closeBoxBtn.addEventListener('click', () => {
+            const video = document.getElementById('floating-shared-video');
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
             floatingBox.classList.add('hidden');
         });
 
         closeModalBtn.addEventListener('click', () => {
+            const video = document.getElementById('floating-shared-video');
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
             floatingModal.classList.add('hidden');
             floatingModal.classList.remove('flex');
             floatingBox.classList.remove('opacity-0', 'pointer-events-none');

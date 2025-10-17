@@ -3712,10 +3712,20 @@ if (isset($_POST["register"])) {
         });
 
         closeBoxBtn.addEventListener('click', () => {
+            const video = document.getElementById('floating-shared-video');
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
             floatingBox.classList.add('hidden');
         });
 
         closeModalBtn.addEventListener('click', () => {
+            const video = document.getElementById('floating-shared-video');
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
             floatingModal.classList.add('hidden');
             floatingModal.classList.remove('flex');
             floatingBox.classList.remove('opacity-0', 'pointer-events-none');
