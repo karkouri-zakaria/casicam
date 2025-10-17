@@ -351,7 +351,7 @@ if (isset($_POST["register"])) {
                         <line x1="4" y1="20" x2="10" y2="14"/>
                     </svg>
                 </button>
-                <video id="floating-shared-video" src="./assets/videos/2025.mp4" autoplay loop playsinline controls class="block w-80 sm:w-96 md:w-[34rem] max-w-screen-sm rounded-2xl shadow-2xl border border-white/10 bg-gray-900"></video>
+                <video id="floating-shared-video" src="./assets/videos/2025.mp4" autoplay muted loop playsinline controls class="block w-80 sm:w-96 md:w-[34rem] max-w-screen-sm rounded-2xl shadow-2xl border border-white/10 bg-gray-900"></video>
             </div>
             </div>
 
@@ -3706,6 +3706,9 @@ if (isset($_POST["register"])) {
             if (video && modalContent && !modalContent.contains(video)) {
                 modalContent.appendChild(video);
                 video.className = 'block w-96 sm:w-[32rem] md:w-[40rem] xl:w-[76rem] max-w-screen-md xl:max-w-screen-xl h-auto rounded-2xl bg-gray-900';
+                // Ensure video is muted and play when moved to modal
+                video.muted = true;
+                video.play().catch(()=>{});
             }
             floatingModal.classList.remove('hidden');
             floatingBox.classList.add('opacity-0', 'pointer-events-none');
@@ -3741,6 +3744,12 @@ if (isset($_POST["register"])) {
             }
             floatingModal.classList.add('hidden');
             floatingBox.classList.remove('opacity-0', 'pointer-events-none');
+        });
+
+        // Try to start playback on load (muted required for autoplay in many browsers)
+        window.addEventListener('load', function(){
+            const v = document.getElementById('floating-shared-video');
+            if(v){ v.muted = true; v.play().catch(()=>{}); }
         });
     </script>
 </html>
