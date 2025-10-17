@@ -351,7 +351,7 @@ if (isset($_POST["register"])) {
                         <line x1="4" y1="20" x2="10" y2="14"/>
                     </svg>
                 </button>
-                <video id="floating-shared-video" src="./assets/videos/2025.mp4" autoplay muted loop playsinline controls class="block w-80 sm:w-96 md:w-[28rem] max-w-screen-sm rounded-2xl shadow-2xl border border-white/10 bg-gray-900"></video>
+                <video id="floating-shared-video" src="./assets/videos/2025.mp4" autoplay loop playsinline controls class="block w-80 sm:w-96 md:w-[28rem] max-w-screen-sm rounded-2xl shadow-2xl border border-white/10 bg-gray-900"></video>
             </div>
             </div>
 
