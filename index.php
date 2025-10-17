@@ -337,7 +337,7 @@ if (isset($_POST["register"])) {
     <body id="top" class="text-white min-h-screen font-saira" data-theme="dark">
         <!-- Floating Video -->
             <!-- Floating Video -->
-            <div id="floating-video-box" class="fixed bottom-8 right-8 z-40 pointer-events-auto transition-opacity duration-200">
+            <div id="floating-video-box" class="fixed bottom-2 right-2 z-40 pointer-events-auto transition-opacity duration-200">
             <div class="relative">
                 <button id="close-floating-video-box" class="z-50 absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gray-900 border border-white/10 shadow-md flex items-center justify-center" title="Close">
                     <svg width="18" height="18" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
@@ -351,7 +351,7 @@ if (isset($_POST["register"])) {
                         <line x1="4" y1="20" x2="10" y2="14"/>
                     </svg>
                 </button>
-                <video id="floating-shared-video" src="./assets/videos/2025.mp4" autoplay loop playsinline controls class="block w-80 sm:w-96 md:w-[28rem] max-w-screen-sm rounded-2xl shadow-2xl border border-white/10 bg-gray-900"></video>
+                <video id="floating-shared-video" src="./assets/videos/2025.mp4" autoplay loop playsinline controls class="block w-80 sm:w-96 md:w-[34rem] max-w-screen-sm rounded-2xl shadow-2xl border border-white/10 bg-gray-900"></video>
             </div>
             </div>
 

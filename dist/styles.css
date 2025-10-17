@@ -836,6 +836,10 @@ video {
   left: 50%;
 }
 
+.bottom-4 {
+  bottom: 1rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1317,6 +1321,10 @@ video {
 
 .w-11\/12 {
   width: 91.666667%;
+}
+
+.w-\[28rem\] {
+  width: 28rem;
 }
 
 .max-w-2xl {
@@ -2932,6 +2940,10 @@ video {
   opacity: 0.8;
 }
 
+.opacity-65 {
+  opacity: 0.65;
+}
+
 .mix-blend-screen {
   mix-blend-mode: screen;
 }
@@ -3663,6 +3675,10 @@ video {
     width: 32rem;
   }
 
+  .sm\:w-\[36rem\] {
+    width: 36rem;
+  }
+
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3943,6 +3959,26 @@ video {
 
   .md\:w-\[8rem\] {
     width: 8rem;
+  }
+
+  .md\:w-\[44rem\] {
+    width: 44rem;
+  }
+
+  .md\:w-\[32rem\] {
+    width: 32rem;
+  }
+
+  .md\:w-\[34rem\] {
+    width: 34rem;
+  }
+
+  .md\:w-\[36rem\] {
+    width: 36rem;
+  }
+
+  .md\:w-\[33rem\] {
+    width: 33rem;
   }
 
   .md\:min-w-\[160px\] {
@@ -4315,8 +4351,20 @@ video {
     width: 76rem;
   }
 
+  .xl\:w-\[80rem\] {
+    width: 80rem;
+  }
+
+  .xl\:w-\[180rem\] {
+    width: 180rem;
+  }
+
   .xl\:max-w-screen-xl {
     max-width: 1280px;
+  }
+
+  .xl\:max-w-screen-2xl {
+    max-width: 1536px;
   }
 
   .xl\:grid-cols-3 {
