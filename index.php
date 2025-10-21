@@ -2270,7 +2270,7 @@ if (isset($_POST["register"])) {
             
             <!-- Previous Editions -->
             <div class="mt-8 sm:mt-10 md:-mt-12">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 max-w-6xl mx-auto px-2 sm:px-0">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 max-w-7xl mx-auto px-2 sm:px-0">
                     <!-- CASICAM 2020 -->
                     <a href="https://www.casicam.com/2020" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02] p-4 hover:border-orange-400/40 transition-all duration-500 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-400/50">
                         <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -2293,13 +2293,6 @@ if (isset($_POST["register"])) {
                             </div>
                         </div>
                     </a>
-                    <!-- Collapse SVG: simple arrows in -->
-                    <svg width="18" height="18" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-                        <polyline points="3 17 7 17 7 21"/>
-                        <polyline points="21 7 17 7 17 3"/>
-                        <line x1="14" y1="10" x2="21" y2="3"/>
-                        <line x1="10" y1="14" x2="3" y2="21"/>
-                    </svg>
                     <!-- CASICAM 2022 -->
                     <a href="https://www.casicam.com/2022" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02] p-4 hover:border-orange-400/40 transition-all duration-500 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-400/50">
                         <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
