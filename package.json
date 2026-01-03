@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
     "export":"php index.php > index.html",
-    "serve": "php -S 0.0.0.0:3009"
+    "serve": "php -S 0.0.0.0:3000"
   },
   "keywords": [],
   "author": "",
